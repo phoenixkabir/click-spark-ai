@@ -20,7 +20,7 @@ function AnalyzeContent() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url }),
     })
-      .then(r => r.json())
+      .then(r => { if (!r.ok) throw new Error(r.statusText); return r.json() })
       .then(data => {
         sessionStorage.setItem('analysisResult', JSON.stringify(data))
         setBrandName(data.brand || 'brand')
