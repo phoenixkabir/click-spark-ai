@@ -41,6 +41,7 @@ const DEMO_DOMAINS = ['liquiddeath.com', 'www.liquiddeath.com']
 
 export function getDemoCache(url: string): AnalysisResult | null {
   const normalized = url.replace(/^https?:\/\//, '').replace(/\/$/, '').toLowerCase()
-  if (DEMO_DOMAINS.some(d => normalized.includes(d))) return LIQUID_DEATH
+  const domain = normalized.split('/')[0]
+  if (DEMO_DOMAINS.includes(domain)) return LIQUID_DEATH
   return null
 }
