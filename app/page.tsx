@@ -12,7 +12,11 @@ export default function LandingPage() {
     e.preventDefault()
     if (!url.trim()) return
     setLoading(true)
-    router.push(`/analyze?url=${encodeURIComponent(url.trim())}`)
+    try {
+      router.push(`/analyze?url=${encodeURIComponent(url.trim())}`)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -33,6 +37,7 @@ export default function LandingPage() {
             type="text"
             value={url}
             onChange={e => setUrl(e.target.value)}
+            aria-label="Brand URL"
             placeholder="Enter your brand URL — e.g. liquiddeath.com"
             required
             className="w-full bg-[#1a1a1a] border border-[#333] rounded-xl px-5 py-4 text-white placeholder-[#555] text-base focus:outline-none focus:border-[#00d68f] transition-colors"
