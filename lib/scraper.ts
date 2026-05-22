@@ -14,11 +14,11 @@ export interface CompetitorData {
 
 export async function scrapeBrand(url: string): Promise<BrandData> {
   const normalized = url.startsWith('http') ? url : `https://${url}`
-  const result = await firecrawl.scrapeUrl(normalized, {
+  const result = await firecrawl.scrape(normalized, {
     formats: ['markdown'],
     onlyMainContent: true,
   })
-  if (!result.success || !result.markdown) {
+  if (!result.markdown) {
     throw new Error(`Failed to scrape ${url}`)
   }
   return { url: normalized, content: result.markdown.slice(0, 8000) }
@@ -28,11 +28,11 @@ export async function scrapeCompetitors(urls: string[]): Promise<CompetitorData[
   const results = await Promise.allSettled(
     urls.slice(0, 3).map(async url => {
       const normalized = url.startsWith('http') ? url : `https://${url}`
-      const result = await firecrawl.scrapeUrl(normalized, {
+      const result = await firecrawl.scrape(normalized, {
         formats: ['markdown'],
         onlyMainContent: true,
       })
-      if (!result.success || !result.markdown) return null
+      if (!result.markdown) return null
       return { url: normalized, content: result.markdown.slice(0, 4000) }
     })
   )
