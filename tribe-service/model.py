@@ -1,17 +1,24 @@
+import threading
 import numpy as np
 import torch
 
 _model = None
+_model_lock = threading.Lock()
+
 
 def load_model():
     global _model
     if _model is not None:
         return _model
-    from tribev2 import TRIBEv2
-    _model = TRIBEv2.from_pretrained("facebook/tribev2")
-    _model.eval()
-    if torch.cuda.is_available():
-        _model = _model.cuda()
+    with _model_lock:
+        # Double-checked locking: re-check after acquiring lock
+        if _model is not None:
+            return _model
+        from tribev2 import TRIBEv2
+        _model = TRIBEv2.from_pretrained("facebook/tribev2")
+        _model.eval()
+        if torch.cuda.is_available():
+            _model = _model.cuda()
     return _model
 
 
@@ -31,6 +38,8 @@ def score_concept(text: str, image_description: str, video_script: str) -> dict:
         text_activations = model.predict_text(text + " " + video_script)
         text_score = compute_attention_score(text_activations.cpu().numpy())
 
+        # Image descriptions are passed as text — TRIBE v2 text pathway scores
+        # the linguistic content of the visual concept
         visual_activations = model.predict_text(image_description)
         visual_score = compute_attention_score(visual_activations.cpu().numpy())
 

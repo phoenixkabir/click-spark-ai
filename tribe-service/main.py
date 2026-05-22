@@ -1,8 +1,16 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from model import score_concept
+from model import load_model, score_concept
 
-app = FastAPI(title="TRIBE v2 Scoring Service")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    load_model()  # warm up on startup — avoids cold-start timeout on first request
+    yield
+
+
+app = FastAPI(title="TRIBE v2 Scoring Service", lifespan=lifespan)
 
 class ScoreRequest(BaseModel):
     text: str
