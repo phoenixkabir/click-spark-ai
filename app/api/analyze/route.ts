@@ -5,11 +5,21 @@ import { scoreConcept } from '@/lib/tribe-client'
 import { getDemoCache } from '@/lib/demo-cache'
 import { AnalysisResult, ContentConcept } from '@/lib/types'
 
+function normalizeUrl(url: string): string {
+  return url.replace(/^https?:\/\//, '').replace(/\/$/, '').toLowerCase()
+}
+
 export async function POST(req: NextRequest) {
-  const { url } = await req.json()
+  let url: string
+  try {
+    const body = await req.json()
+    url = body?.url
+  } catch {
+    return NextResponse.json({ error: 'Invalid request body' }, { status: 400 })
+  }
   if (!url) return NextResponse.json({ error: 'URL required' }, { status: 400 })
 
-  const cached = getDemoCache(url)
+  const cached = getDemoCache(normalizeUrl(url))
   if (cached) return NextResponse.json(cached)
 
   try {
@@ -20,7 +30,7 @@ export async function POST(req: NextRequest) {
     const brief = await buildBrandBrief(brandData.content, competitorContent)
     const rawConcepts = await generateContentConcepts(brief)
 
-    const scoredConcepts: ContentConcept[] = await Promise.all(
+    const scoreResults = await Promise.allSettled(
       rawConcepts.map(async concept => {
         const scores = await scoreConcept({
           text: concept.hook,
@@ -32,9 +42,17 @@ export async function POST(req: NextRequest) {
           tribeScore: scores.combinedScore,
           textScore: scores.textScore,
           visualScore: scores.visualScore,
-        }
+        } satisfies ContentConcept
       })
     )
+
+    const scoredConcepts = scoreResults
+      .filter((r): r is PromiseFulfilledResult<ContentConcept> => r.status === 'fulfilled')
+      .map(r => r.value)
+
+    if (scoredConcepts.length === 0) {
+      return NextResponse.json({ error: 'All concepts failed to score' }, { status: 500 })
+    }
 
     const result: AnalysisResult = {
       brand: brief.name,
