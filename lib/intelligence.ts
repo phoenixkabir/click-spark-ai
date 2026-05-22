@@ -43,7 +43,7 @@ export async function buildBrandBrief(
       content: `Analyze this brand and its competitors. Return ONLY valid JSON:
 {"name":"Brand name","tone":"2-3 word voice","audience":"one sentence","differentiator":"what makes brand unique","competitorGaps":"what competitors are not doing"}
 
-BRAND:\n${brandContent}\n\nCOMPETITORS:\n${competitorContent}`
+BRAND:\n${brandContent}\n\nCOMPETITORS:\n${competitorContent.slice(0, 8000)}`
     }]
   })
   const text = msg.content[0].type === 'text' ? msg.content[0].text : ''
@@ -75,5 +75,5 @@ Return ONLY valid JSON array:
     }]
   })
   const text = msg.content[0].type === 'text' ? msg.content[0].text : ''
-  return extractJSON(text, true)
+  return extractJSON<Omit<ContentConcept, 'tribeScore' | 'textScore' | 'visualScore'>[]>(text, true)
 }
