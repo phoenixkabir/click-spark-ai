@@ -14,8 +14,16 @@ export default function DashboardPage() {
   useEffect(() => {
     const stored = sessionStorage.getItem('analysisResult')
     if (!stored) { router.push('/'); return }
-    setResult(JSON.parse(stored) as AnalysisResult)
-    setTimeout(() => setVisible(true), 100)
+    try {
+      const parsed = JSON.parse(stored) as AnalysisResult
+      if (!parsed?.brand || !Array.isArray(parsed?.concepts)) { router.push('/'); return }
+      setResult(parsed)
+    } catch {
+      router.push('/')
+      return
+    }
+    const timer = setTimeout(() => setVisible(true), 100)
+    return () => clearTimeout(timer)
   }, [router])
 
   if (!result) return null
