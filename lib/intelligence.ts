@@ -1,7 +1,7 @@
-import Anthropic from '@anthropic-ai/sdk'
+import OpenAI from 'openai'
 import { ContentConcept } from './types'
 
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! })
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! })
 
 export interface BrandBrief {
   name: string
@@ -14,20 +14,20 @@ export interface BrandBrief {
 function extractJSON<T>(text: string, arrayMode = false): T {
   const pattern = arrayMode ? /\[[\s\S]*\]/ : /\{[\s\S]*\}/
   const match = text.match(pattern)
-  if (!match) throw new Error('Failed to parse JSON from Claude response')
+  if (!match) throw new Error('Failed to parse JSON from OpenAI response')
   return JSON.parse(match[0]) as T
 }
 
 export async function discoverCompetitors(brandContent: string): Promise<string[]> {
-  const msg = await anthropic.messages.create({
-    model: 'claude-sonnet-4-6',
+  const response = await openai.chat.completions.create({
+    model: 'gpt-4o-mini',
     max_tokens: 256,
     messages: [{
       role: 'user',
       content: `Based on this brand content, name the top 3 competitor domains. Return ONLY a JSON array: ["domain1.com","domain2.com","domain3.com"]\n\n${brandContent.slice(0, 2000)}`
     }]
   })
-  const text = msg.content[0].type === 'text' ? msg.content[0].text : '[]'
+  const text = response.choices[0]?.message?.content ?? '[]'
   return extractJSON<string[]>(text, true)
 }
 
@@ -35,8 +35,8 @@ export async function buildBrandBrief(
   brandContent: string,
   competitorContent: string
 ): Promise<BrandBrief> {
-  const msg = await anthropic.messages.create({
-    model: 'claude-sonnet-4-6',
+  const response = await openai.chat.completions.create({
+    model: 'gpt-4o-mini',
     max_tokens: 1024,
     messages: [{
       role: 'user',
@@ -46,15 +46,15 @@ export async function buildBrandBrief(
 BRAND:\n${brandContent}\n\nCOMPETITORS:\n${competitorContent.slice(0, 8000)}`
     }]
   })
-  const text = msg.content[0].type === 'text' ? msg.content[0].text : ''
+  const text = response.choices[0]?.message?.content ?? ''
   return extractJSON<BrandBrief>(text)
 }
 
 export async function generateContentConcepts(
   brief: BrandBrief
 ): Promise<Omit<ContentConcept, 'tribeScore' | 'textScore' | 'visualScore'>[]> {
-  const msg = await anthropic.messages.create({
-    model: 'claude-sonnet-4-6',
+  const response = await openai.chat.completions.create({
+    model: 'gpt-4o',
     max_tokens: 2048,
     messages: [{
       role: 'user',
@@ -74,6 +74,6 @@ Return ONLY valid JSON array:
 [{"id":"a","hook":"opening line max 15 words","imageDescription":"detailed visual description","videoScript":"15-second video angle 2-3 sentences"},{"id":"b",...},{"id":"c",...}]`
     }]
   })
-  const text = msg.content[0].type === 'text' ? msg.content[0].text : ''
+  const text = response.choices[0]?.message?.content ?? ''
   return extractJSON<Omit<ContentConcept, 'tribeScore' | 'textScore' | 'visualScore'>[]>(text, true)
 }
