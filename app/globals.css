@@ -21,4 +21,9 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-display), system-ui, sans-serif;
+  color: #fff;
+}
+
+p, span, div {
+  color: inherit;
 }
