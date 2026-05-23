@@ -32,28 +32,31 @@ export default function DashboardPage() {
   const [winner, ...losers] = sorted
 
   return (
-    <main className="min-h-screen px-6 py-12 max-w-2xl mx-auto">
-      <div className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+    <main className="min-h-screen px-6 py-10 max-w-lg mx-auto">
+      <div className={`transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}>
         <div className="mb-8">
-          <div className="text-xs text-[#00d68f] font-semibold tracking-widest uppercase mb-2">
-            Brain Attention Analysis
+          <div className="flex items-center gap-2 mb-3">
+            <span className="inline-block w-4 h-[2px] bg-[#00d68f]" />
+            <div className="text-[11px] text-[#00d68f] font-semibold tracking-[0.2em] uppercase">
+              Brain Attention Analysis
+            </div>
           </div>
-          <h1 className="text-2xl font-black text-white">{result.brand}</h1>
+          <h1 className="text-3xl font-black text-white leading-tight">{result.brand}</h1>
         </div>
-        <div className="mb-6">
+        <div className="mb-4">
           <WinnerCard
             concept={winner}
             signalsProcessed={result.signalsProcessed}
             percentile={result.percentile}
           />
         </div>
-        <div className="text-xs text-[#444] uppercase tracking-widest mb-3">Other Concepts</div>
-        <div className="flex flex-col gap-3">
+        <div className="text-[10px] text-[#444] uppercase tracking-widest mb-3 mt-6">Other Concepts</div>
+        <div className="flex flex-col gap-2">
           {losers.map(c => <LoserCard key={c.id} concept={c} />)}
         </div>
         <button
           onClick={() => router.push('/')}
-          className="mt-8 text-[#444] text-sm hover:text-[#888] transition-colors"
+          className="mt-8 text-[#555] text-sm hover:text-[#999] transition-colors"
         >
           ← Analyze another brand
         </button>
