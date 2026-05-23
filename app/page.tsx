@@ -20,38 +20,52 @@ export default function LandingPage() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-6">
-      <div className="w-full max-w-xl text-center">
-        <div className="mb-3 text-xs font-semibold tracking-[0.2em] text-[#00d68f] uppercase">
-          Powered by TRIBE v2 Brain Encoding
+    <main className="min-h-screen flex flex-col items-center justify-center px-6 py-16">
+      <div className="w-full max-w-lg">
+        {/* Eyebrow */}
+        <div className="mb-6 flex items-center gap-2">
+          <span className="inline-block w-5 h-[2px] bg-[var(--accent)]" />
+          <span className="text-[11px] font-semibold tracking-[0.25em] text-[var(--accent)] uppercase">
+            TRIBE v2 Brain Encoding
+          </span>
         </div>
-        <h1 className="text-5xl font-black tracking-tight mb-4 leading-tight">
-          Click Spark <span className="text-[#00d68f]">AI</span>
+
+        {/* Headline */}
+        <h1 className="text-[3.25rem] font-black leading-[1.1] tracking-tight text-white mb-4">
+          Click Spark<br />
+          <span className="text-[var(--accent)]">AI</span>
         </h1>
-        <p className="text-[#888] text-lg mb-10 leading-relaxed">
-          Brain-validated content.<br />
-          Before you spend a rupee.
+
+        {/* Subhead */}
+        <p className="text-[#999] text-base leading-relaxed mb-10 max-w-sm">
+          Brain-validated content concepts — scored before you spend a rupee.
         </p>
+
+        {/* Form */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-          <input
-            type="text"
-            value={url}
-            onChange={e => setUrl(e.target.value)}
-            aria-label="Brand URL"
-            placeholder="Enter your brand URL — e.g. liquiddeath.com"
-            required
-            className="w-full bg-[#1a1a1a] border border-[#333] rounded-xl px-5 py-4 text-white placeholder-[#555] text-base focus:outline-none focus:border-[#00d68f] transition-colors"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              value={url}
+              onChange={e => setUrl(e.target.value)}
+              aria-label="Brand URL"
+              placeholder="liquiddeath.com"
+              required
+              className="w-full bg-[var(--surface)] border border-[var(--border)] rounded-lg px-4 py-3.5 text-white placeholder-[var(--text-muted)] text-[15px] focus:outline-none focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]/30 transition-all"
+            />
+          </div>
           <button
             type="submit"
             disabled={loading || !url.trim()}
-            className="w-full bg-[#00d68f] text-black font-bold py-4 rounded-xl text-base hover:bg-[#00f0a0] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="w-full bg-[var(--accent)] text-black font-bold py-3.5 rounded-lg text-[15px] hover:bg-[var(--accent-hover)] disabled:bg-[#1a2e23] disabled:text-[#3a6b4e] disabled:cursor-not-allowed transition-all"
           >
-            {loading ? 'Analyzing...' : 'Analyze →'}
+            {loading ? 'Analyzing…' : 'Analyze →'}
           </button>
         </form>
-        <p className="mt-6 text-[#444] text-sm">
-          3 content concepts · TRIBE v2 brain scores · Ready in seconds
+
+        {/* Meta */}
+        <p className="mt-5 text-[var(--text-dim)] text-xs">
+          3 concepts &middot; TRIBE v2 scores &middot; Ready in seconds
         </p>
       </div>
     </main>
