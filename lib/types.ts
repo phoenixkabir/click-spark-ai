@@ -3,15 +3,26 @@ export interface ContentConcept {
   hook: string
   imageDescription: string
   videoScript: string
-  tribeScore: number
-  textScore: number
-  visualScore: number
+  rewardScore: number
+  attentionScore: number
+  emotionScore: number
+  memoryScore: number
+  overallScore: number
+  explanations?: {
+    reward: string
+    attention: string
+    emotion: string
+    memory: string
+  }
+  suggestions?: {
+    improvedHook: string
+    improvedScript: string
+    why: string
+  }
 }
 
 export interface AnalysisResult {
   brand: string
   url: string
   concepts: ContentConcept[]
-  signalsProcessed: number
-  percentile: number
 }
