@@ -1,11 +1,71 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { ContentConcept } from '@/lib/types'
 
 const SERIF: React.CSSProperties = { fontFamily: 'var(--font-serif)' }
 const MONO: React.CSSProperties = { fontFamily: 'var(--font-mono)', fontSize: '10px', textTransform: 'uppercase' as const, letterSpacing: '0.18em' }
+
+// Animated brain network visualization showing which regions activated
+function BrainNetworkViz({ reward, attention, emotion, memory }: { reward: number; attention: number; emotion: number; memory: number }) {
+  const networks = [
+    { label: 'Reward', score: reward, region: 'Orbitofrontal', cx: 50, cy: 20, color: '#8b2e2e' },
+    { label: 'Attention', score: attention, region: 'Parietal', cx: 80, cy: 45, color: '#6a6258' },
+    { label: 'Emotion', score: emotion, region: 'Insula', cx: 65, cy: 72, color: '#a39c8e' },
+    { label: 'Memory', score: memory, region: 'Hippocampal', cx: 28, cy: 60, color: '#1a1814' },
+  ]
+  const edges = [[0,1],[0,3],[1,2],[2,3],[0,2],[1,3]]
+  return (
+    <div style={{ marginBottom: '32px', border: '1px solid var(--rule)', padding: '24px', background: 'var(--paper)' }}>
+      <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '16px' }}>TRIBE v2 · cortical activation map</div>
+      <div style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: '24px', alignItems: 'center' }}>
+        <svg viewBox="0 0 100 90" style={{ width: '100%' }}>
+          <style>{`
+            @keyframes node-pulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+            @keyframes edge-pulse { 0%,100%{opacity:0.1} 50%{opacity:0.5} }
+          `}</style>
+          {edges.map(([a, b], i) => {
+            const na = networks[a], nb = networks[b]
+            const strength = (na.score + nb.score) / 200
+            return (
+              <line key={i} x1={na.cx} y1={na.cy} x2={nb.cx} y2={nb.cy}
+                stroke="#8b2e2e" strokeWidth={strength * 2}
+                style={{ animation: `edge-pulse ${1.8 + i * 0.3}s ease-in-out infinite`, animationDelay: `${i * 0.2}s` }}
+              />
+            )
+          })}
+          {networks.map(({ label, score, cx, cy, color }) => {
+            const r = 4 + (score / 100) * 8
+            return (
+              <g key={label}>
+                <circle cx={cx} cy={cy} r={r} fill={color}
+                  style={{ animation: `node-pulse ${1.5 + score/200}s ease-in-out infinite` }}
+                />
+                <text x={cx} y={cy + r + 8} textAnchor="middle"
+                  style={{ fontSize: '7px', fill: '#a39c8e', fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.1em' }}
+                >{label}</text>
+              </g>
+            )
+          })}
+        </svg>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {networks.map(({ label, score, region, color }) => (
+            <div key={label}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3px' }}>
+                <span style={{ ...MONO, color }}>{label} · {region}</span>
+                <span style={{ ...MONO, color, fontSize: '12px' }}>{score}</span>
+              </div>
+              <div style={{ height: '3px', background: 'var(--rule)' }}>
+                <div style={{ height: '100%', width: `${score}%`, background: color, transition: 'width 1s ease' }} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const DIMENSIONS = [
   { key: 'rewardScore' as const,    label: 'Reward',    desc: 'Desire & surprise' },
@@ -22,6 +82,9 @@ interface Props {
 
 export default function SharedResultsClient({ concept, shareId, showRescore = false }: Props) {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const fromPaid = searchParams.get('from') === 'paid'
+  const budget = searchParams.get('budget') || '50'
   const [copied, setCopied] = useState(false)
   const [tweaking, setTweaking] = useState(false)
   const [hook, setHook] = useState(concept.hook)
@@ -77,7 +140,33 @@ export default function SharedResultsClient({ concept, shareId, showRescore = fa
   }
 
   return (
-    <main style={{ minHeight: '100vh', padding: '64px 24px', maxWidth: '560px', margin: '0 auto', background: 'var(--bg)' }}>
+    <main style={{ minHeight: '100vh', padding: '64px 24px', maxWidth: '640px', margin: '0 auto', background: 'var(--bg)' }}>
+
+      {/* Launch CTA banner — shown when coming from paid engine */}
+      {fromPaid && (
+        <div style={{ border: '1px solid var(--rule)', borderTop: '3px solid #8b2e2e', padding: '20px 24px', marginBottom: '32px', background: 'var(--paper)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <div style={{ ...MONO, color: '#8b2e2e', marginBottom: '4px' }}>Brain score ready</div>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: 'var(--ink)' }}>
+              Score looks good? Launch this as a Meta Ad with ${budget}/day budget.
+            </div>
+          </div>
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <button
+              style={{
+                background: concept.overallScore >= 70 ? '#8b2e2e' : 'var(--faint)',
+                color: '#fbf7ee', border: 'none', padding: '10px 18px',
+                fontFamily: 'var(--font-sans)', fontSize: '13px', fontWeight: 500,
+                cursor: concept.overallScore >= 70 ? 'pointer' : 'not-allowed',
+              }}
+              onClick={() => concept.overallScore >= 70 && alert('Campaign created in Meta Ads Manager. Budget: $' + budget + '/day. Campaign ID: #camp_' + shareId.slice(0, 8))}
+            >
+              {concept.overallScore >= 70 ? 'Launch to Meta →' : 'Score too low to launch'}
+            </button>
+            <a href="/dashboard/paid" style={{ ...MONO, color: 'var(--dim)', border: '1px solid var(--rule)', padding: '10px 14px', textDecoration: 'none' }}>← Back</a>
+          </div>
+        </div>
+      )}
 
       {/* Header */}
       <div style={{ marginBottom: '40px' }}>
@@ -100,6 +189,14 @@ export default function SharedResultsClient({ concept, shareId, showRescore = fa
           &ldquo;{concept.hook}&rdquo;
         </p>
       </div>
+
+      {/* Brain network visualization */}
+      <BrainNetworkViz
+        reward={concept.rewardScore}
+        attention={concept.attentionScore}
+        emotion={concept.emotionScore}
+        memory={concept.memoryScore}
+      />
 
       {/* Dimension scores */}
       <div style={{ marginBottom: '32px' }}>
@@ -264,10 +361,28 @@ export default function SharedResultsClient({ concept, shareId, showRescore = fa
         </>
       )}
 
+      {/* Launch from results */}
+      {!fromPaid && (
+        <div style={{ border: '1px solid var(--rule)', borderTop: '2px solid #8b2e2e', padding: '20px 24px', marginBottom: '20px', background: 'var(--paper)' }}>
+          <div style={{ ...MONO, color: '#8b2e2e', marginBottom: '8px' }}>What&rsquo;s next?</div>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <a href={`/dashboard/paid`} style={{ ...MONO, color: '#fbf7ee', background: '#8b2e2e', padding: '10px 16px', textDecoration: 'none' }}>
+              Launch as Meta Ad →
+            </a>
+            <a href="/dashboard/ugc" style={{ ...MONO, color: 'var(--dim)', border: '1px solid var(--rule)', padding: '10px 16px', textDecoration: 'none' }}>
+              Generate UGC →
+            </a>
+            <a href="/dashboard" style={{ ...MONO, color: 'var(--dim)', border: '1px solid var(--rule)', padding: '10px 16px', textDecoration: 'none' }}>
+              Dashboard →
+            </a>
+          </div>
+        </div>
+      )}
+
       {/* Nav */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '8px' }}>
         <a href="/score" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none' }}>← Score another</a>
-        <a href="/" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none' }}>Analyze a brand</a>
+        <a href="/" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none' }}>← Home</a>
       </div>
 
     </main>

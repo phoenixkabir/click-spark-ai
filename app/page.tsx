@@ -4,56 +4,14 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 const MARQUEE_ITEMS = [
-  '720 real subjects',
-  '70,000 cortical regions',
-  '1,200 hrs of fMRI',
-  'reward · emotion · attention · memory',
-  'TRIBE v2 · neural encoding model',
-  '90-second turnaround',
-  '3 concepts, ranked',
-  'one run per day',
-]
-
-const SCORE_BARS = [
-  { label: 'Reward', val: 94 },
-  { label: 'Emotion', val: 88 },
-  { label: 'Attention', val: 92 },
-  { label: 'Memory', val: 86 },
-]
-
-const DIMENSIONS = [
-  {
-    num: '01',
-    label: 'Reward',
-    pct: '30%',
-    quote: '"I want to share this."',
-    body: 'Fires when the hook promises a payoff in the first two seconds. The signal that decides if a brain leans in or scrolls past.',
-    region: 'Orbitofrontal cortex',
-  },
-  {
-    num: '02',
-    label: 'Emotion',
-    pct: '25%',
-    quote: '"I feel this."',
-    body: 'Fires when a face reacts on camera or a beat lands with the cut. The signal that turns an ad into a feeling instead of a message.',
-    region: 'Insula + cingulate',
-  },
-  {
-    num: '03',
-    label: 'Attention',
-    pct: '25%',
-    quote: '"I can\'t look away."',
-    body: 'Fires when the edit refuses to let the eye rest. The signal that decides whether the next five seconds get watched at all.',
-    region: 'Parietal + frontal',
-  },
-  {
-    num: '04',
-    label: 'Memory',
-    pct: '20%',
-    quote: '"I\'ll remember this."',
-    body: 'Fires when the close calls back to the open. The signal that decides if the brand survives until the next morning.',
-    region: 'Parahippocampal + DMN',
-  },
+  'Meta Ads · win now',
+  'AI UGC · subconscious layer',
+  'LinkedIn · YouTube · SEO · win forever',
+  'TRIBE v2 · 720 subjects · 70,000 regions',
+  'score before you spend',
+  'distribution OS for companies',
+  'paid · owned · earned · in one system',
+  '1,200 hrs of fMRI brain data',
 ]
 
 const MONO: React.CSSProperties = { fontFamily: 'var(--font-mono)', fontSize: '10px', textTransform: 'uppercase' as const, letterSpacing: '0.20em' }
@@ -73,7 +31,7 @@ function SectionRule({ num, title }: { num: string; title: string }) {
         <span style={{ color: '#8b2e2e', marginRight: '10px' }}>§ {num}</span>
         {title}
       </span>
-      <span style={{ ...MONO, color: '#6a6258' }}>Click Spark Quarterly · Iss. 04</span>
+      <span style={{ ...MONO, color: '#6a6258' }}>Click Spark · Distribution OS</span>
     </div>
   )
 }
@@ -124,178 +82,127 @@ export default function LandingPage() {
         background: '#f4efe6',
         zIndex: 100,
       }}>
-        {/* Left */}
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
           <span style={{ color: '#8b2e2e', ...SERIF, fontSize: '18px' }}>◆</span>
           <span style={{ ...SERIF, fontSize: '18px', color: '#1a1814' }}>
             Click Spark<span style={{ color: '#8b2e2e' }}>.</span>
           </span>
-          <span style={{ ...MONO, color: '#a39c8e', fontSize: '10px', letterSpacing: '0.18em', marginLeft: '2px' }}>v2 · TRIBE</span>
+          <span style={{ ...MONO, color: '#a39c8e', fontSize: '10px', letterSpacing: '0.18em', marginLeft: '2px' }}>Distribution OS</span>
         </div>
 
-        {/* Center */}
         <div style={{ display: 'flex', gap: '28px', alignItems: 'center' }}>
           {([
-            ['The method', '#how-it-works'],
+            ['How it works', '#how-it-works'],
             ['Sample report', '/sample'],
-            ['Proof', '/coming-soon'],
+            ['Score a creative', '/score'],
             ['Pricing', '/coming-soon'],
           ] as [string, string][]).map(([l, href]) => (
             <a key={l} href={href} style={{ ...MONO, color: '#a39c8e', textDecoration: 'none', letterSpacing: '0.18em' }}>{l}</a>
           ))}
         </div>
 
-        {/* Right */}
-        <a href="/waitlist" style={{
+        <a href="/dashboard" style={{
           ...MONO,
           color: '#fbf7ee',
-          background: '#1a1814',
+          background: '#8b2e2e',
           border: 'none',
           padding: '10px 14px',
           textDecoration: 'none',
           letterSpacing: '0.16em',
           display: 'inline-block',
-        }}>Get access →</a>
+        }}>Launch the OS →</a>
       </nav>
 
       {/* Hero */}
       <section style={{ padding: '56px 40px 40px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: '56px', alignItems: 'start' }}>
 
-          {/* Left col */}
           <div>
-            {/* Eyebrow */}
             <div style={{ marginBottom: '24px' }}>
               <span style={{ ...MONO, color: '#8b2e2e', letterSpacing: '0.22em', borderBottom: '1px solid #8b2e2e', paddingBottom: '2px' }}>
-                fMRI-trained · peer-reviewed weights
+                paid · subconscious · owned — all in one system
               </span>
             </div>
 
-            {/* H1 */}
-            <h1 style={{ ...SERIF, fontSize: '108px', lineHeight: 0.92, letterSpacing: '-0.025em', margin: 0 }}>
-              <span style={{ color: '#1a1814', display: 'block' }}>Anyone can ship.</span>
-              <em style={{ color: '#8b2e2e', fontStyle: 'italic', display: 'block' }}>Almost no one</em>
-              <span style={{ color: '#6a6258', display: 'block' }}>gets remembered.</span>
+            <h1 style={{ ...SERIF, fontSize: '100px', lineHeight: 0.92, letterSpacing: '-0.025em', margin: 0 }}>
+              <span style={{ color: '#1a1814', display: 'block' }}>Building is easy.</span>
+              <em style={{ color: '#8b2e2e', fontStyle: 'italic', display: 'block' }}>Being noticed</em>
+              <span style={{ color: '#6a6258', display: 'block' }}>is the hard part.</span>
             </h1>
 
-            {/* Body */}
             <p style={{ fontFamily: 'var(--font-sans)', fontSize: '17px', color: '#6a6258', lineHeight: 1.55, maxWidth: '520px', marginTop: '28px' }}>
-              The first tool that grades an ad before it runs — against the four brain networks that actually decide what gets remembered. Hand us a brand; ninety seconds later you have three concepts, ranked by how strongly 720 brains and 70,000 regions reacted. Reward, emotion, attention, memory. Each scored every second.
+              ClipSpark is the distribution OS for companies that shipped. Three engines running in parallel: Meta Ads to win now, AI UGC running in the background as your subconscious layer, and owned content compounding forever. Every piece scored against TRIBE v2 — the brain model trained on 1,200 hours of real fMRI — before it goes out.
             </p>
 
-            {/* URL input row */}
-            <form onSubmit={handleSubmit} style={{ marginTop: '28px', maxWidth: '540px' }}>
-              <div style={{
-                borderTop: '1px solid #1a1814',
-                borderBottom: '1px solid #1a1814',
-                display: 'flex',
-                alignItems: 'stretch',
+            <div style={{ display: 'flex', gap: '12px', marginTop: '32px' }}>
+              <a href="/dashboard" style={{
+                background: '#1a1814',
+                color: '#fbf7ee',
+                padding: '16px 24px',
+                fontFamily: 'var(--font-sans)',
+                fontSize: '14px',
+                fontWeight: 500,
+                textDecoration: 'none',
+                letterSpacing: '0.02em',
               }}>
-                <span style={{
-                  ...MONO, color: '#a39c8e', letterSpacing: '0.20em',
-                  padding: '0 14px',
-                  display: 'flex', alignItems: 'center',
-                  borderRight: 'none',
-                  whiteSpace: 'nowrap',
-                }}>URL —</span>
-                <input
-                  type="text"
-                  value={url}
-                  onChange={e => setUrl(e.target.value)}
-                  placeholder="patagonia.com"
-                  required
-                  style={{
-                    flex: 1,
-                    padding: '16px 0',
-                    background: 'transparent',
-                    border: 'none',
-                    outline: 'none',
-                    ...SERIF,
-                    fontSize: '22px',
-                    color: '#1a1814',
-                  }}
-                />
-                <button
-                  type="submit"
-                  disabled={loading || !url.trim()}
-                  style={{
-                    background: '#8b2e2e',
-                    color: '#fbf7ee',
-                    border: 'none',
-                    padding: '0 22px',
-                    fontFamily: 'var(--font-sans)',
-                    fontSize: '13px',
-                    fontWeight: 500,
-                    letterSpacing: '0.04em',
-                    cursor: loading || !url.trim() ? 'not-allowed' : 'pointer',
-                    whiteSpace: 'nowrap',
-                    opacity: loading || !url.trim() ? 0.5 : 1,
-                  }}
-                >
-                  Generate concepts →
-                </button>
-              </div>
-            </form>
+                Open the dashboard →
+              </a>
+              <a href="/score" style={{
+                background: 'transparent',
+                color: '#1a1814',
+                padding: '16px 24px',
+                fontFamily: 'var(--font-sans)',
+                fontSize: '14px',
+                border: '1px solid rgba(26,24,20,0.2)',
+                textDecoration: 'none',
+                letterSpacing: '0.02em',
+              }}>
+                Score a creative first
+              </a>
+            </div>
 
-            {/* Meta line */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px', maxWidth: '540px' }}>
-              <span style={{ ...MONO, color: '#a39c8e', letterSpacing: '0.18em' }}>TRIBE v2  ·  720 subjects  ·  70,000 regions</span>
-              <span style={{ ...MONO, color: '#a39c8e', letterSpacing: '0.18em' }}>
-                or  <a href="/sample" style={{ color: '#a39c8e', textDecoration: 'underline' }}>see a sample report ↗</a>
-              </span>
+            <div style={{ marginTop: '16px' }}>
+              <a href="/sample" style={{ ...MONO, color: '#a39c8e', textDecoration: 'underline', letterSpacing: '0.18em' }}>
+                See a sample brain report ↗
+              </a>
             </div>
           </div>
 
-          {/* Right col — live score card */}
-          <div style={{ borderLeft: '1px solid var(--rule)' }}>
-            <div style={{
-              background: '#fbf7ee',
-              border: '1px solid #1a1814',
-              padding: '20px 22px',
-            }}>
-              {/* Card header */}
-              <div style={{
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                borderBottom: '1px solid var(--rule)', paddingBottom: '10px', marginBottom: '14px',
+          {/* Right col — OS status card */}
+          <div style={{ borderLeft: '1px solid var(--rule)', paddingLeft: '40px' }}>
+            <div style={{ ...MONO, color: '#8b2e2e', marginBottom: '16px' }}>Distribution OS · live status</div>
+            {[
+              { layer: '01 · Paid', label: 'Meta Ads', status: 'RUNNING', detail: '3 campaigns · ROAS 4.2×', color: '#8b2e2e' },
+              { layer: '02 · UGC', label: 'AI UGC', status: 'ACTIVE', detail: '12 videos live · 84K views', color: '#6a6258' },
+              { layer: '03 · Owned', label: 'Organic', status: 'PUBLISHING', detail: '4 posts this week', color: '#a39c8e' },
+            ].map(({ layer, label, status, detail, color }) => (
+              <div key={layer} style={{
+                borderTop: '1px solid var(--rule)',
+                padding: '16px 0',
+                display: 'grid',
+                gridTemplateColumns: '90px 1fr auto',
+                gap: '12px',
+                alignItems: 'center',
               }}>
-                <span style={{ ...MONO, color: '#a39c8e', letterSpacing: '0.20em' }}>Live · brain score</span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '6px', ...MONO, color: '#a39c8e', letterSpacing: '0.20em' }}>
-                  <span style={{ width: '6px', height: '6px', background: '#8b2e2e', borderRadius: '50%', display: 'inline-block' }} />
-                  reading · 23 May
-                </span>
-              </div>
-
-              {/* Score row */}
-              <div style={{ display: 'flex', alignItems: 'flex-end', gap: '18px' }}>
-                <span style={{ ...SERIF, fontSize: '132px', color: '#8b2e2e', lineHeight: 0.85, letterSpacing: '-0.03em', fontVariantNumeric: 'tabular-nums' }}>91</span>
-                <div style={{ paddingBottom: '8px' }}>
-                  <div style={{ ...SERIF, fontStyle: 'italic', fontSize: '22px', color: '#1a1814' }}>high recall</div>
-                  <div style={{ ...MONO, color: '#a39c8e', letterSpacing: '0.20em', marginTop: '4px' }}>94th percentile · n=720</div>
+                <span style={{ ...MONO, color: '#a39c8e' }}>{layer}</span>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#1a1814', fontWeight: 500 }}>{label}</div>
+                  <div style={{ ...MONO, color: '#a39c8e', marginTop: '2px' }}>{detail}</div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: color, display: 'inline-block' }} />
+                  <span style={{ ...MONO, color, fontSize: '9px' }}>{status}</span>
                 </div>
               </div>
-
-              {/* Sub-rows */}
-              <div style={{ borderTop: '1px solid #1a1814', marginTop: '14px' }}>
-                {SCORE_BARS.map(({ label, val }, i) => (
-                  <div key={label} style={{
-                    display: 'grid', gridTemplateColumns: '110px 1fr 56px', gap: '12px',
-                    padding: '10px 0',
-                    borderBottom: i < SCORE_BARS.length - 1 ? '1px solid var(--rule)' : 'none',
-                    alignItems: 'center',
-                  }}>
-                    <span style={{ ...SERIF, fontSize: '16px', color: '#1a1814' }}>{label}</span>
-                    <div style={{ height: '6px', background: 'rgba(26,24,20,0.05)' }}>
-                      <div style={{ height: '100%', width: `${val}%`, background: '#8b2e2e' }} />
-                    </div>
-                    <span style={{ ...SERIF, fontSize: '22px', fontVariantNumeric: 'tabular-nums', color: '#1a1814', textAlign: 'right' }}>{val}</span>
-                  </div>
-                ))}
+            ))}
+            <div style={{ borderTop: '2px solid #1a1814', marginTop: '8px', paddingTop: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ ...MONO, color: '#a39c8e' }}>TRIBE v2 avg score</span>
+                <span style={{ ...SERIF, fontSize: '28px', color: '#8b2e2e', fontVariantNumeric: 'tabular-nums' }}>84</span>
               </div>
-
-              {/* Footer caption */}
-              <p style={{ ...SERIF, fontStyle: 'italic', fontSize: '13px', color: '#6a6258', marginTop: '14px' }}>
-                Concept: &ldquo;Old gear has the best stories.&rdquo; · scored against 70,000 cortical regions.
-              </p>
+              <div style={{ height: '3px', background: 'var(--rule)', marginTop: '8px' }}>
+                <div style={{ height: '100%', width: '84%', background: '#8b2e2e' }} />
+              </div>
             </div>
           </div>
         </div>
@@ -317,41 +224,42 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* §01 */}
-      <SectionRule num="01" title="The product · three surfaces" />
+      {/* §01 — Win Now: Meta Ads */}
+      <div id="how-it-works" />
+      <SectionRule num="01" title="Win Now · Meta Ads Engine" />
       <section style={{ padding: '40px 40px 56px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '56px' }}>
-          {/* Left */}
           <div>
             <h2 style={{ ...SERIF, fontSize: '64px', lineHeight: 0.95, letterSpacing: '-0.02em', color: '#1a1814', margin: 0 }}>
-              Scan. Compare.<br />
-              <em style={{ color: '#8b2e2e', fontStyle: 'italic' }}>Concept.</em>
+              Score before<br />
+              <em style={{ color: '#8b2e2e', fontStyle: 'italic' }}>you spend.</em>
             </h2>
             <p style={{ ...SERIF, fontStyle: 'italic', fontSize: '18px', color: '#6a6258', marginTop: '16px' }}>
-              One loop. Every brand you scan teaches the next concept how to land.
+              Every ad gets a TRIBE v2 brain score before it reaches a single dollar of spend. Connect your Meta account. The model does the rest.
             </p>
+            <a href="/dashboard/paid" style={{
+              display: 'inline-block', marginTop: '24px',
+              ...MONO, color: '#fbf7ee', background: '#8b2e2e',
+              padding: '12px 18px', textDecoration: 'none', letterSpacing: '0.18em',
+            }}>Open Ads Engine →</a>
           </div>
 
-          {/* Right — article rows */}
           <div>
             {[
-              { tag: '01 · THE MIRROR', title: 'Scan a brand.', body: 'Drop a URL. We read the site, the about page, and five close competitors. You get a one-page read of how the brand actually shows up — voice, posture, where it leans, where it hides.', cta: 'See a sample scan →', href: '/sample' },
-              { tag: '02 · THE BENCH', title: 'Compare to rivals.', body: 'Same prompt, five neighbours. The model returns each one\'s concept profile and ranks them against the brand you scanned. You learn fast where the category is crowded and where it is wide open.', cta: 'Run a head-to-head →', href: '/coming-soon' },
-              { tag: '03 · THE LEDE', title: 'Three concepts, ranked.', body: 'Three ad concepts, each scored against the four brain networks. A winner the brain takes home, two it forgets by lunch. You see exactly which seconds carried it and which seconds went dark.', cta: 'Get the three concepts →', href: '/' },
-            ].map(({ tag, title, body, cta, href }, i) => (
-              <article key={tag} style={{
-                display: 'grid', gridTemplateColumns: '110px 1fr 160px', gap: '24px',
-                padding: '24px 0',
+              { step: '01', title: 'Paste your creative.', body: 'Drop the hook, visual description, and script. Or paste everything in one block — we parse it.' },
+              { step: '02', title: 'Get the brain score.', body: 'TRIBE v2 runs against 70,000 cortical regions. You see Reward, Attention, Emotion, Memory — and exactly why each number landed where it did.' },
+              { step: '03', title: 'Launch directly to Meta.', body: 'Connect your Ads Manager. Set budget, targeting, and schedule. The campaign goes live from inside Click Spark — no switching tabs.' },
+              { step: '04', title: 'Track real outcomes.', body: 'CTR, ROAS, CPA — all flowing back. Every campaign that runs trains the model to predict the next one better.' },
+            ].map(({ step, title, body }, i) => (
+              <article key={step} style={{
+                display: 'grid', gridTemplateColumns: '56px 1fr',
+                gap: '20px', padding: '20px 0',
                 borderTop: i === 0 ? '1px solid #1a1814' : '1px solid var(--rule)',
-                alignItems: 'start',
               }}>
-                <span style={{ ...MONO, color: '#8b2e2e', letterSpacing: '0.20em' }}>{tag}</span>
+                <span style={{ ...MONO, color: '#8b2e2e' }}>{step}</span>
                 <div>
-                  <h3 style={{ ...SERIF, fontSize: '32px', lineHeight: 1.05, letterSpacing: '-0.015em', color: '#1a1814', margin: '0 0 8px' }}>{title}</h3>
-                  <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#6a6258', lineHeight: 1.55 }}>{body}</p>
-                </div>
-                <div style={{ textAlign: 'right' }}>
-                  <a href={href} style={{ ...MONO, color: '#1a1814', textDecoration: 'underline', letterSpacing: '0.18em' }}>{cta}</a>
+                  <h3 style={{ ...SERIF, fontSize: '24px', color: '#1a1814', margin: '0 0 6px' }}>{title}</h3>
+                  <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#6a6258', lineHeight: 1.55, margin: 0 }}>{body}</p>
                 </div>
               </article>
             ))}
@@ -372,143 +280,220 @@ export default function LandingPage() {
             <p style={{ ...SERIF, fontSize: '44px', lineHeight: 1.18, letterSpacing: '-0.015em', color: '#1a1814', margin: 0 }}>
               Most ads get scored after they fail.{' '}
               <em style={{ color: '#8b2e2e', fontStyle: 'italic' }}>We score them before.</em>
-              {' '}The brain knows in two seconds; we just give you the receipt.
+              {' '}The brain knows in two seconds. We give you the receipt before you spend a dollar.
             </p>
           </blockquote>
-          <p style={{ ...MONO, color: '#a39c8e', letterSpacing: '0.22em', marginTop: '28px' }}>— Editor&rsquo;s note · the thesis</p>
+          <p style={{ ...MONO, color: '#a39c8e', letterSpacing: '0.22em', marginTop: '28px' }}>— the thesis · why prediction beats testing</p>
         </div>
       </section>
 
-      {/* §02 */}
-      <div id="how-it-works" />
-      <SectionRule num="02" title="How the number is made" />
+      {/* §02 — Subconscious Layer: AI UGC */}
+      <SectionRule num="02" title="Subconscious Layer · AI UGC" />
       <section style={{ padding: '40px 40px 56px' }}>
-        <p style={{ ...MONO, color: '#8b2e2e', letterSpacing: '0.20em', marginBottom: '16px' }}>The four-network model</p>
-        <h2 style={{ ...SERIF, fontSize: '76px', lineHeight: 0.95, letterSpacing: '-0.02em', color: '#1a1814', margin: '0 0 24px' }}>
-          Four networks.<br />
-          <em style={{ color: '#8b2e2e', fontStyle: 'italic' }}>One number.</em>
-        </h2>
-        <p style={{ fontFamily: 'var(--font-sans)', fontSize: '16px', color: '#6a6258', lineHeight: 1.55, maxWidth: '560px', marginBottom: '40px' }}>
-          Every score is a weighted blend of four cortical networks that real fMRI data shows decide what we remember and what we share. No vibes. No &ldquo;ad-tech math.&rdquo; Just the brain doing what it does.
-        </p>
-
-        {/* 4-col grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', borderTop: '1px solid #1a1814', borderBottom: '1px solid #1a1814' }}>
-          {DIMENSIONS.map(({ num, label, pct, quote, body, region }, i) => (
-            <div key={label} style={{
-              padding: '28px 22px',
-              borderRight: i < 3 ? '1px solid var(--rule)' : 'none',
-              display: 'flex', flexDirection: 'column', gap: '14px',
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                <span style={{ ...MONO, color: '#a39c8e', fontSize: '14px', letterSpacing: '0.18em' }}>{num}</span>
-                <span style={{ ...MONO, color: '#8b2e2e', fontSize: '14px', letterSpacing: '0.18em' }}>weight {pct}</span>
-              </div>
-              <h3 style={{ ...SERIF, fontSize: '40px', lineHeight: 1, letterSpacing: '-0.02em', color: '#1a1814', margin: 0 }}>{label}</h3>
-              <p style={{ ...SERIF, fontStyle: 'italic', fontSize: '16px', color: '#8b2e2e', margin: 0, lineHeight: 1.4 }}>{quote}</p>
-              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#6a6258', lineHeight: 1.55, margin: 0 }}>{body}</p>
-              <span style={{ ...MONO, color: '#a39c8e', letterSpacing: '0.18em', marginTop: 'auto', borderTop: '1px solid var(--rule)', paddingTop: '14px' }}>{region}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Composite bar */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '24px' }}>
-          <span style={{ ...MONO, color: '#6a6258', letterSpacing: '0.18em', whiteSpace: 'nowrap' }}>Composite weights →</span>
-          <div style={{ flex: 1, display: 'flex', height: '6px' }}>
-            <div style={{ width: '30%', background: '#8b2e2e' }} />
-            <div style={{ width: '25%', background: '#1a1814' }} />
-            <div style={{ width: '25%', background: '#6a6258' }} />
-            <div style={{ width: '20%', background: '#a39c8e' }} />
+        <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: '56px', alignItems: 'start' }}>
+          <div>
+            {[
+              {
+                tag: 'What it is',
+                title: 'The ads that don\'t feel like ads.',
+                body: 'AI-generated creator-style videos running quietly across accounts in your niche. Not branded. Not polished. They feel native because they\'re built to feel native — same energy as the feed, same formats that already work.',
+              },
+              {
+                tag: 'How it runs',
+                title: 'Brief in. Videos out. Accounts running.',
+                body: 'You give us the brand brief. We generate the scripts — hook, body, CTA — calibrated to the platform and the creator persona. The UGC goes live on creator accounts. You watch the view counts.',
+              },
+              {
+                tag: 'Why it compounds',
+                title: 'Every view is a brand impression you didn\'t pay ad rates for.',
+                body: 'Organic UGC views compound over time. A video that hits the algorithm keeps running for months. The subconscious layer builds familiarity that makes the paid ads convert better. Both layers feed each other.',
+              },
+            ].map(({ tag, title, body }, i) => (
+              <article key={tag} style={{
+                display: 'grid', gridTemplateColumns: '140px 1fr', gap: '28px',
+                padding: '24px 0',
+                borderTop: i === 0 ? '1px solid #1a1814' : '1px solid var(--rule)',
+              }}>
+                <span style={{ ...MONO, color: '#8b2e2e' }}>{tag}</span>
+                <div>
+                  <h3 style={{ ...SERIF, fontSize: '28px', color: '#1a1814', margin: '0 0 8px', lineHeight: 1.1 }}>{title}</h3>
+                  <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#6a6258', lineHeight: 1.55, margin: 0 }}>{body}</p>
+                </div>
+              </article>
+            ))}
           </div>
-          <span style={{ ...MONO, color: '#6a6258', letterSpacing: '0.18em', whiteSpace: 'nowrap' }}>Reward · Emotion · Attention · Memory</span>
+
+          <div style={{ borderLeft: '1px solid var(--rule)', paddingLeft: '40px', position: 'sticky', top: '80px' }}>
+            <div style={{ ...MONO, color: '#a39c8e', marginBottom: '16px' }}>UGC · live creator accounts</div>
+            {[
+              { handle: '@dailygrind.co', views: '23.4K', score: 88, platform: 'TikTok', status: 'LIVE' },
+              { handle: '@buildershub', views: '11.2K', score: 76, platform: 'Reels', status: 'LIVE' },
+              { handle: '@founder.feed', views: '8.9K', score: 81, platform: 'TikTok', status: 'EDITING' },
+            ].map(({ handle, views, score, platform, status }) => (
+              <div key={handle} style={{ borderTop: '1px solid var(--rule)', padding: '14px 0' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#1a1814', fontWeight: 500 }}>{handle}</span>
+                  <span style={{ ...MONO, color: status === 'LIVE' ? '#8b2e2e' : '#a39c8e', fontSize: '9px' }}>{status}</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ ...MONO, color: '#a39c8e' }}>{platform} · {views} views</span>
+                  <span style={{ ...MONO, color: '#6a6258' }}>score {score}</span>
+                </div>
+              </div>
+            ))}
+            <a href="/dashboard/ugc" style={{
+              display: 'block', marginTop: '16px',
+              ...MONO, color: '#1a1814', textDecoration: 'none',
+              borderTop: '2px solid #1a1814', paddingTop: '12px',
+            }}>Open UGC Engine →</a>
+          </div>
         </div>
       </section>
 
-      {/* §03 */}
-      <SectionRule num="03" title="Built for teams that won't guess" />
-      <section style={{ background: '#fbf7ee', padding: '40px 40px 24px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: '56px', alignItems: 'start' }}>
-          {/* Left */}
+      {/* §03 — Win Forever: Organic */}
+      <SectionRule num="03" title="Win Forever · Organic Distribution" />
+      <section style={{ padding: '40px 40px 56px', background: '#fbf7ee' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: '56px' }}>
           <div>
-            <h2 style={{ ...SERIF, fontSize: '72px', lineHeight: 0.95, letterSpacing: '-0.02em', color: '#1a1814', margin: 0 }}>
-              Ship the ad. Then ship a{' '}
-              <em style={{ color: '#8b2e2e', fontStyle: 'italic' }}>better one.</em>
+            <h2 style={{ ...SERIF, fontSize: '64px', lineHeight: 0.95, letterSpacing: '-0.02em', color: '#1a1814', margin: 0 }}>
+              Content that<br />
+              <em style={{ color: '#8b2e2e', fontStyle: 'italic' }}>compounds.</em>
             </h2>
-            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '16px', color: '#6a6258', lineHeight: 1.55, maxWidth: '480px', marginTop: '20px' }}>
-              The first tool that measured page-speed won the web. The first tool that measures brain-speed wins the feed. Get a sample report in ninety seconds — one run on us, no card.
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', color: '#6a6258', lineHeight: 1.6, marginTop: '20px' }}>
+              One brand brief generates a full content calendar: LinkedIn posts, YouTube scripts, SEO articles. All scored before they publish. All designed to build the audience that makes every future ad cheaper to run.
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginTop: '24px' }}>
-              <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                style={{
-                  background: '#1a1814', color: '#fbf7ee', border: 'none',
-                  padding: '12px 20px',
-                  fontFamily: 'var(--font-sans)', fontSize: '12px', fontWeight: 500,
-                  textTransform: 'uppercase', letterSpacing: '0.16em',
-                  cursor: 'pointer',
-                }}
-              >
-                Generate concepts →
-              </button>
-              <a href="/coming-soon" style={{ ...MONO, color: '#1a1814', textDecoration: 'underline', letterSpacing: '0.16em' }}>
-                Read the research ↗
-              </a>
+            <a href="/dashboard/organic" style={{
+              display: 'inline-block', marginTop: '24px',
+              ...MONO, color: '#1a1814', textDecoration: 'none',
+              borderBottom: '1px solid #1a1814', paddingBottom: '2px',
+            }}>Open Content Engine →</a>
+          </div>
+
+          <div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+              {[
+                { platform: 'LinkedIn', type: 'thought leadership', output: '5 posts / week', icon: '🔗' },
+                { platform: 'YouTube', type: 'long-form scripts', output: '2 videos / week', icon: '▶' },
+                { platform: 'SEO', type: 'keyword articles', output: '4 articles / month', icon: '◎' },
+              ].map(({ platform, type, output, icon }) => (
+                <div key={platform} style={{
+                  border: '1px solid var(--rule)',
+                  borderTop: '2px solid #1a1814',
+                  padding: '20px',
+                  background: '#fbf7ee',
+                }}>
+                  <div style={{ fontSize: '20px', marginBottom: '12px' }}>{icon}</div>
+                  <div style={{ ...MONO, color: '#8b2e2e', marginBottom: '6px' }}>{platform}</div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#6a6258', lineHeight: 1.5 }}>{type}</div>
+                  <div style={{ ...MONO, color: '#1a1814', marginTop: '12px' }}>{output}</div>
+                </div>
+              ))}
+            </div>
+            <p style={{ ...SERIF, fontStyle: 'italic', fontSize: '16px', color: '#6a6258', marginTop: '24px', lineHeight: 1.5 }}>
+              "The dogfooding loop. Every ad, post, and UGC video we ship is built by ClipSpark. The whole company is the demo. Anyone can copy the code. No one can copy the proof."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* §04 — The intelligence layer */}
+      <SectionRule num="04" title="The Intelligence Layer · TRIBE v2" />
+      <section style={{ padding: '40px 40px 56px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: '56px', alignItems: 'center' }}>
+          <div>
+            <h2 style={{ ...SERIF, fontSize: '56px', lineHeight: 0.95, letterSpacing: '-0.02em', color: '#1a1814', margin: 0 }}>
+              Everything scored<br />before it ships.
+            </h2>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', color: '#6a6258', lineHeight: 1.6, marginTop: '20px', maxWidth: '480px' }}>
+              Meta&rsquo;s TRIBE v2 is a foundation model trained on 1,200 hours of fMRI brain scans across 720 subjects. It predicts how 20,484 cortical vertices respond to video, second by second. We run it on every creative before it leaves the platform — paid, UGC, or organic.
+            </p>
+            <div style={{ display: 'flex', gap: '40px', marginTop: '32px' }}>
+              {[['720', 'real subjects'], ['70K', 'cortical regions'], ['1,200h', 'of fMRI data']].map(([num, label]) => (
+                <div key={label}>
+                  <div style={{ ...SERIF, fontSize: '40px', color: '#8b2e2e', lineHeight: 1 }}>{num}</div>
+                  <div style={{ ...MONO, color: '#a39c8e', marginTop: '4px' }}>{label}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Right — testimonial */}
-          <div style={{ borderLeft: '2px solid #8b2e2e', paddingLeft: '24px' }}>
-            <p style={{ ...SERIF, fontStyle: 'italic', fontSize: '22px', color: '#1a1814', lineHeight: 1.4, margin: 0 }}>
-              &ldquo;We were going to spend $480k testing this in market. Click Spark told us in ninety seconds which one to spend it on. The winner did 2.7× the recall of the runner-up.&rdquo;
-            </p>
-            <p style={{ ...MONO, color: '#6a6258', letterSpacing: '0.18em', marginTop: '18px' }}>
-              — Brand director, outdoor apparel · 12 person team
-            </p>
+          <div>
+            {[
+              { network: 'Reward', pct: '30%', desc: '"I want to share this."', region: 'Orbitofrontal cortex' },
+              { network: 'Attention', pct: '25%', desc: '"I can\'t look away."', region: 'Parietal + frontal' },
+              { network: 'Emotion', pct: '25%', desc: '"This makes me feel."', region: 'Insula + cingulate' },
+              { network: 'Memory', pct: '20%', desc: '"I\'ll remember this."', region: 'Parahippocampal + DMN' },
+            ].map(({ network, pct, desc, region }, i) => (
+              <div key={network} style={{
+                borderTop: i === 0 ? '2px solid #1a1814' : '1px solid var(--rule)',
+                padding: '14px 0',
+                display: 'grid', gridTemplateColumns: '90px 1fr 40px', gap: '12px', alignItems: 'baseline',
+              }}>
+                <span style={{ ...MONO, color: '#8b2e2e' }}>{network}</span>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#1a1814', fontStyle: 'italic' }}>{desc}</div>
+                  <div style={{ ...MONO, color: '#a39c8e', marginTop: '2px' }}>{region}</div>
+                </div>
+                <span style={{ ...MONO, color: '#6a6258', textAlign: 'right' }}>{pct}</span>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA strip */}
+      <section style={{
+        background: '#1a1814',
+        padding: '56px 40px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}>
+        <div>
+          <div style={{ ...MONO, color: '#a39c8e', marginBottom: '12px' }}>Ready to run the OS?</div>
+          <h2 style={{ ...SERIF, fontSize: '48px', color: '#fbf7ee', margin: 0, lineHeight: 1 }}>
+            Start with a<br />
+            <em style={{ color: '#8b2e2e' }}>brain score.</em>
+          </h2>
+        </div>
+        <div style={{ display: 'flex', gap: '12px' }}>
+          <a href="/dashboard" style={{
+            background: '#8b2e2e', color: '#fbf7ee',
+            padding: '16px 28px',
+            fontFamily: 'var(--font-sans)', fontSize: '14px', fontWeight: 500,
+            textDecoration: 'none', letterSpacing: '0.02em',
+          }}>Open the dashboard →</a>
+          <a href="/score" style={{
+            background: 'transparent', color: '#fbf7ee',
+            padding: '16px 28px',
+            fontFamily: 'var(--font-sans)', fontSize: '14px',
+            border: '1px solid rgba(251,247,238,0.2)',
+            textDecoration: 'none', letterSpacing: '0.02em',
+          }}>Score a creative</a>
         </div>
       </section>
 
       {/* Footer */}
-      <footer style={{ background: '#f4efe6', borderTop: '1px solid #1a1814', padding: '32px 40px 28px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '5fr 4fr 3fr', gap: '40px' }}>
-          {/* Left */}
-          <div>
-            <div style={{ ...SERIF, fontSize: '28px', color: '#1a1814' }}>
-              Click Spark<span style={{ color: '#8b2e2e' }}>.</span>
-            </div>
-            <p style={{ ...SERIF, fontStyle: 'italic', fontSize: '14px', color: '#6a6258', marginTop: '8px', lineHeight: 1.55 }}>
-              Brain-encoded creative. Read before you spend.
-            </p>
-          </div>
-
-          {/* Middle */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-            <div>
-              <div style={{ ...MONO, color: '#6a6258', letterSpacing: '0.18em', marginBottom: '10px' }}>Product</div>
-              {([['Scan', '/'], ['Compare', '/coming-soon'], ['Concepts', '/']] as [string, string][]).map(([l, href]) => (
-                <a key={l} href={href} style={{ display: 'block', ...MONO, color: '#6a6258', textDecoration: 'none', marginBottom: '6px', letterSpacing: '0.18em' }}>{l}</a>
-              ))}
-            </div>
-            <div>
-              <div style={{ ...MONO, color: '#6a6258', letterSpacing: '0.18em', marginBottom: '10px' }}>Research</div>
-              {['The four networks', 'TRIBE v2 paper', 'Methods note'].map(l => (
-                <a key={l} href="/coming-soon" style={{ display: 'block', ...MONO, color: '#6a6258', textDecoration: 'none', marginBottom: '6px', letterSpacing: '0.18em' }}>{l}</a>
-              ))}
-            </div>
-          </div>
-
-          {/* Right */}
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ ...MONO, color: '#6a6258', letterSpacing: '0.18em', marginBottom: '8px' }}>©2026 Click Spark</div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '14px' }}>
-              {['Privacy', 'Terms', 'Contact'].map(l => (
-                <a key={l} href="/coming-soon" style={{ ...MONO, color: '#6a6258', textDecoration: 'none', letterSpacing: '0.18em' }}>{l}</a>
-              ))}
-            </div>
-          </div>
+      <footer style={{
+        borderTop: '1px solid #1a1814',
+        padding: '28px 40px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        background: '#f4efe6',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
+          <span style={{ color: '#8b2e2e', ...SERIF, fontSize: '16px' }}>◆</span>
+          <span style={{ ...SERIF, fontSize: '16px', color: '#1a1814' }}>Click Spark<span style={{ color: '#8b2e2e' }}>.</span></span>
         </div>
+        <div style={{ display: 'flex', gap: '24px' }}>
+          {[['Dashboard', '/dashboard'], ['Score', '/score'], ['Waitlist', '/waitlist'], ['Contact', '/coming-soon']].map(([l, h]) => (
+            <a key={l} href={h} style={{ ...MONO, color: '#a39c8e', textDecoration: 'none' }}>{l}</a>
+          ))}
+        </div>
+        <span style={{ ...MONO, color: '#a39c8e' }}>Powered by TRIBE v2 · Meta AI Research</span>
       </footer>
+
     </main>
   )
 }

@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { decodeConcept } from '@/lib/share'
 import { Metadata } from 'next'
+import { Suspense } from 'react'
 import SharedResultsClient from './SharedResultsClient'
 
 interface Props {
@@ -37,5 +38,9 @@ export default async function SharedResultsPage({ params }: Props) {
   const concept = decodeConcept(id)
   if (!concept) notFound()
 
-  return <SharedResultsClient concept={concept} shareId={id} showRescore />
+  return (
+    <Suspense fallback={null}>
+      <SharedResultsClient concept={concept} shareId={id} showRescore />
+    </Suspense>
+  )
 }
