@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { scrapeBrand, scrapeCompetitors } from '@/lib/scraper'
 import { buildBrandBrief, generateContentConcepts, discoverCompetitors } from '@/lib/intelligence'
 import { scoreConcept } from '@/lib/tribe-client'
+import { explainScores } from '@/lib/explainer'
 import { getDemoCache } from '@/lib/demo-cache'
 import { AnalysisResult, ContentConcept } from '@/lib/types'
 
@@ -37,12 +38,25 @@ export async function POST(req: NextRequest) {
           imageDescription: concept.imageDescription,
           videoScript: concept.videoScript,
         })
-        return {
+        const explanations = await explainScores(
+          concept.hook,
+          concept.imageDescription,
+          concept.videoScript,
+          scores.rewardScore,
+          scores.attentionScore,
+          scores.emotionScore,
+          scores.memoryScore,
+        ).catch(() => undefined)
+        const scored: ContentConcept = {
           ...concept,
-          tribeScore: scores.combinedScore,
-          textScore: scores.textScore,
-          visualScore: scores.visualScore,
-        } satisfies ContentConcept
+          rewardScore:    scores.rewardScore,
+          attentionScore: scores.attentionScore,
+          emotionScore:   scores.emotionScore,
+          memoryScore:    scores.memoryScore,
+          overallScore:   scores.overallScore,
+          explanations,
+        }
+        return scored
       })
     )
 
@@ -58,8 +72,6 @@ export async function POST(req: NextRequest) {
       brand: brief.name,
       url,
       concepts: scoredConcepts,
-      signalsProcessed: 847,
-      percentile: 4,
     }
 
     return NextResponse.json(result)

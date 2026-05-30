@@ -1,7 +1,17 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
 name: tribe-v1
-endpoint_name: tribe-scoring-endpoint
+endpoint_name: tribe-ep-44834
 environment:
-  image: clicksparkcr.azurecr.io/tribe-service:v1
-instance_type: Standard_NC24ads_A100_v4
+  image: clicksparkcr.azurecr.io/tribe-service:v7
+  inference_config:
+    liveness_route:
+      path: /health
+      port: 8080
+    readiness_route:
+      path: /health
+      port: 8080
+    scoring_route:
+      path: /score
+      port: 8080
+instance_type: Standard_DS2_v2
 instance_count: 1

@@ -1,50 +1,69 @@
 import { ContentConcept } from '@/lib/types'
 
-interface WinnerCardProps {
-  concept: ContentConcept
-  signalsProcessed: number
-  percentile: number
-}
+const SERIF: React.CSSProperties = { fontFamily: 'var(--font-serif)' }
+const MONO: React.CSSProperties = { fontFamily: 'var(--font-mono)', fontSize: '10px', textTransform: 'uppercase' as const, letterSpacing: '0.18em' }
 
-export default function WinnerCard({ concept, signalsProcessed, percentile }: WinnerCardProps) {
+const SUB_SCORES: { key: keyof Pick<ContentConcept, 'rewardScore' | 'attentionScore' | 'emotionScore'>; label: string }[] = [
+  { key: 'rewardScore', label: 'Reward' },
+  { key: 'attentionScore', label: 'Attention' },
+  { key: 'emotionScore', label: 'Emotion' },
+]
+
+export default function WinnerCard({ concept }: { concept: ContentConcept }) {
   return (
-    <div className="border border-[#00d68f]/30 rounded-xl bg-[#111] p-6 relative">
-      <div className="absolute -top-3 left-5 bg-[#00d68f] text-black text-[10px] font-black px-3 py-1 rounded-full tracking-[0.15em] uppercase">
-        Post This
-      </div>
-      <div className="flex items-start justify-between gap-6 mb-6 mt-2">
-        <div className="flex-1">
-          <p className="text-white text-xl font-semibold leading-snug">
+    <div style={{ borderTop: '2px solid #1a1814', borderBottom: '1px solid #1a1814', padding: '20px 0' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 120px', gap: '24px', alignItems: 'flex-start' }}>
+
+        {/* Left */}
+        <div>
+          {/* Badge row */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+            <span style={{
+              ...MONO, background: '#8b2e2e', color: '#fbf7ee',
+              padding: '5px 8px', letterSpacing: '0.18em',
+            }}>
+              Post this
+            </span>
+            <span style={{ ...MONO, color: '#a39c8e', letterSpacing: '0.18em' }}>Lede · concept 01</span>
+          </div>
+
+          {/* Hook */}
+          <h2 style={{ ...SERIF, fontSize: '38px', color: '#1a1814', letterSpacing: '-0.015em', lineHeight: 1.1, margin: '0 0 14px' }}>
             &ldquo;{concept.hook}&rdquo;
+          </h2>
+
+          {/* Script */}
+          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#6a6258', lineHeight: 1.55, marginTop: '14px', maxWidth: '540px' }}>
+            {concept.videoScript}
           </p>
         </div>
-        <div className="text-right flex-shrink-0">
-          <div className="text-5xl font-black text-[#00d68f] leading-none tabular-nums">
-            {concept.tribeScore}
+
+        {/* Right — score */}
+        <div style={{ textAlign: 'right' }}>
+          <div style={{ ...MONO, color: '#a39c8e', letterSpacing: '0.18em', marginBottom: '6px' }}>Brain</div>
+          <div style={{ ...SERIF, fontSize: '84px', color: '#8b2e2e', lineHeight: 0.85, fontVariantNumeric: 'tabular-nums' }}>
+            {concept.overallScore}
           </div>
-          <div className="text-[#00d68f]/60 text-xs font-medium mt-0.5">/100</div>
-          <div className="text-[#666] text-[11px] mt-1">brain score</div>
+          <div style={{ ...SERIF, fontStyle: 'italic', fontSize: '12px', color: '#a39c8e', marginTop: '4px' }}>of one hundred</div>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-2 mb-5">
-        {[
-          { label: 'Text', score: concept.textScore },
-          { label: 'Visual', score: concept.visualScore },
-          { label: 'Audio', score: Math.round((concept.textScore + concept.visualScore) / 2) },
-        ].map(({ label, score }) => (
-          <div key={label} className="bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg p-3 text-center">
-            <div className="text-white font-bold text-base tabular-nums">{score}</div>
-            <div className="text-[#666] text-[11px] mt-0.5">{label}</div>
+
+      {/* Sub-scores */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0', marginTop: '20px', borderTop: '1px solid var(--rule)', paddingTop: '14px' }}>
+        {SUB_SCORES.map(({ key, label }) => (
+          <div key={key} style={{ textAlign: 'center' }}>
+            <div style={{ ...MONO, color: '#a39c8e', letterSpacing: '0.18em', marginBottom: '6px' }}>{label}</div>
+            <div style={{ ...SERIF, fontSize: '32px', color: '#1a1814', fontVariantNumeric: 'tabular-nums' }}>{concept[key]}</div>
           </div>
         ))}
       </div>
-      <div className="border-t border-[#222] pt-4">
-        <div className="text-[10px] text-[#444] mb-2 uppercase tracking-widest">Video Script</div>
-        <p className="text-[#aaa] text-sm leading-relaxed">{concept.videoScript}</p>
-      </div>
-      <div className="mt-4 text-[11px] text-[#444]">
-        Top {percentile}% of content analyzed &middot; {signalsProcessed.toLocaleString()} signals processed
-      </div>
+
+      {/* Caption */}
+      {concept.explanations && (
+        <p style={{ ...SERIF, fontStyle: 'italic', fontSize: '12px', color: '#a39c8e', marginTop: '12px' }}>
+          {Object.values(concept.explanations).filter(Boolean)[0]}
+        </p>
+      )}
     </div>
   )
 }

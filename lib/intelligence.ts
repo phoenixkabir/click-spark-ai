@@ -52,13 +52,13 @@ BRAND:\n${brandContent}\n\nCOMPETITORS:\n${competitorContent.slice(0, 8000)}`
 
 export async function generateContentConcepts(
   brief: BrandBrief
-): Promise<Omit<ContentConcept, 'tribeScore' | 'textScore' | 'visualScore'>[]> {
+): Promise<Omit<ContentConcept, 'rewardScore' | 'attentionScore' | 'emotionScore' | 'memoryScore' | 'overallScore'>[]> {
   const response = await openai.chat.completions.create({
     model: 'gpt-4o',
     max_tokens: 2048,
     messages: [{
       role: 'user',
-      content: `Generate 3 DISTINCTLY DIFFERENT content concepts for this brand. Use completely different psychological hooks so brain engagement scores will diverge significantly.
+      content: `Generate 3 DISTINCTLY DIFFERENT content concepts for this brand. Each concept must use a completely different psychological mechanism — the brain engagement scores should diverge significantly when tested.
 
 Brand: ${brief.name}
 Tone: ${brief.tone}
@@ -66,14 +66,14 @@ Audience: ${brief.audience}
 Differentiator: ${brief.differentiator}
 Competitor gaps: ${brief.competitorGaps}
 
-Concept A: shock/provocation angle (intentionally low brain engagement)
-Concept B: identity/belonging angle (mid brain engagement)
-Concept C: movement/transformation angle (highest brain engagement — this is the winner)
+Concept A: shock/provocation angle
+Concept B: identity/belonging angle
+Concept C: movement/transformation angle
 
 Return ONLY valid JSON array:
 [{"id":"a","hook":"opening line max 15 words","imageDescription":"detailed visual description","videoScript":"15-second video angle 2-3 sentences"},{"id":"b",...},{"id":"c",...}]`
     }]
   })
   const text = response.choices[0]?.message?.content ?? ''
-  return extractJSON<Omit<ContentConcept, 'tribeScore' | 'textScore' | 'visualScore'>[]>(text, true)
+  return extractJSON<Omit<ContentConcept, 'rewardScore' | 'attentionScore' | 'emotionScore' | 'memoryScore' | 'overallScore'>[]>(text, true)
 }
