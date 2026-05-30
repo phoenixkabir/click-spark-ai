@@ -220,8 +220,8 @@ export default function PaidEnginePage() {
           <span style={{ ...MONO, color: '#8b2e2e' }}>Ads Engine</span>
         </div>
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-          <a href="/dashboard/ugc" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none' }}>UGC →</a>
-          <a href="/dashboard/organic" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none' }}>Organic →</a>
+          <a href="/dashboard/ugc" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none', padding: '8px 0', minHeight: '44px', display: 'flex', alignItems: 'center' }}>UGC →</a>
+          <a href="/dashboard/organic" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none', padding: '8px 0', minHeight: '44px', display: 'flex', alignItems: 'center' }}>Organic →</a>
         </div>
       </nav>
 

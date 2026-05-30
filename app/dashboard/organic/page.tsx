@@ -112,8 +112,8 @@ export default function OrganicEnginePage() {
           <span style={{ ...MONO, color: '#a39c8e' }}>Content Engine</span>
         </div>
         <div style={{ display: 'flex', gap: '16px' }}>
-          <a href="/dashboard/paid" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none' }}>Paid →</a>
-          <a href="/dashboard/ugc" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none' }}>UGC →</a>
+          <a href="/dashboard/paid" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none', padding: '8px 0', minHeight: '44px', display: 'flex', alignItems: 'center' }}>Paid →</a>
+          <a href="/dashboard/ugc" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none', padding: '8px 0', minHeight: '44px', display: 'flex', alignItems: 'center' }}>UGC →</a>
         </div>
       </nav>
 

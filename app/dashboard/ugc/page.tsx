@@ -103,8 +103,8 @@ export default function UGCEnginePage() {
           <span style={{ ...MONO, color: '#6a6258' }}>AI UGC Engine</span>
         </div>
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-          <a href="/dashboard/paid" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none' }}>Paid →</a>
-          <a href="/dashboard/organic" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none' }}>Organic →</a>
+          <a href="/dashboard/paid" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none', padding: '8px 0', minHeight: '44px', display: 'flex', alignItems: 'center' }}>Paid →</a>
+          <a href="/dashboard/organic" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none', padding: '8px 0', minHeight: '44px', display: 'flex', alignItems: 'center' }}>Organic →</a>
         </div>
       </nav>
 
