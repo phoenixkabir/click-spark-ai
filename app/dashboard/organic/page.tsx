@@ -137,7 +137,7 @@ export default function OrganicEnginePage() {
             <div style={{ ...MONO, color: 'var(--faint)', fontSize: '9px' }}>Brief → topic → generate → score → publish</div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0', border: '1px solid var(--rule)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(160px, 1fr))', gap: '0', border: '1px solid var(--rule)', overflowX: 'auto' }}>
             {PIPELINE_STAGES.map((stage, i) => {
               const isLive = stage.status === 'live'
               return (

@@ -127,7 +127,7 @@ export default function UGCEnginePage() {
         {/* Pipeline overview */}
         <div style={{ marginBottom: '48px' }}>
           <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '16px' }}>Full pipeline · ideation → publish</div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', border: '1px solid var(--rule)', background: 'var(--paper)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(160px, 1fr))', border: '1px solid var(--rule)', background: 'var(--paper)', overflowX: 'auto' }}>
             {PIPELINE_STAGES.map((stage, i) => (
               <div
                 key={stage.num}
