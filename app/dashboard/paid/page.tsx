@@ -50,6 +50,7 @@ interface MetaData {
     avgCtr: number
     activeCampaigns: number
   }
+  _demo?: boolean
 }
 
 const MONO: React.CSSProperties = { fontFamily: 'var(--font-mono)', fontSize: '10px', textTransform: 'uppercase' as const, letterSpacing: '0.18em' }
@@ -362,7 +363,8 @@ export default function PaidEnginePage() {
                 {activeSource === 'meta' && metaData && (
                   <div style={{ ...MONO, color: 'var(--faint)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#1877F2', display: 'inline-block' }} />
-                    Live · Meta · {metaData.summary.activeCampaigns} active · last 30 days · 3 accounts
+                    {metaData._demo ? 'Demo · Meta · ' : 'Live · Meta · '}{metaData.summary.activeCampaigns} active · last 30 days · 3 accounts
+                    {metaData._demo && <span style={{ background: '#d4a017', color: '#fbf7ee', padding: '1px 6px' }}>demo</span>}
                   </div>
                 )}
                 {activeSource === 'taboola' && adsData && (

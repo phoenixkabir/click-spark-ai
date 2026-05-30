@@ -50,11 +50,41 @@ function getConversions(actions?: Array<{ action_type: string; value: string }>)
     .reduce((s, a) => s + parseFloat(a.value || '0'), 0)
 }
 
+const DUMMY_DATA = {
+  source: 'meta',
+  accounts: [
+    { brand: 'tradewise', accountId: 'demo' },
+    { brand: 'astrolearn', accountId: 'demo' },
+    { brand: 'healoved', accountId: 'demo' },
+  ],
+  campaigns: [
+    { id: 'tw_001', name: 'Tradewise · Wealth Mindset', brand: 'tradewise', status: 'ACTIVE', objective: 'CONVERSIONS', spend: 48200, impressions: 1840000, clicks: 22100, ctr: 1.20, conversions: 312, roas: 4.8 },
+    { id: 'tw_002', name: 'Tradewise · Learn to Invest', brand: 'tradewise', status: 'ACTIVE', objective: 'LEAD_GENERATION', spend: 31500, impressions: 980000, clicks: 14700, ctr: 1.50, conversions: 189, roas: 3.6 },
+    { id: 'tw_003', name: 'Tradewise · First Trade', brand: 'tradewise', status: 'PAUSED', objective: 'CONVERSIONS', spend: 12800, impressions: 540000, clicks: 5940, ctr: 1.10, conversions: 67, roas: 2.1 },
+    { id: 'al_001', name: 'AstroLearn · Daily Horoscope', brand: 'astrolearn', status: 'ACTIVE', objective: 'APP_INSTALLS', spend: 62400, impressions: 3200000, clicks: 44800, ctr: 1.40, conversions: 2840, roas: 5.2 },
+    { id: 'al_002', name: 'AstroLearn · Birth Chart Deep Dive', brand: 'astrolearn', status: 'ACTIVE', objective: 'CONVERSIONS', spend: 29100, impressions: 1120000, clicks: 16800, ctr: 1.50, conversions: 410, roas: 4.1 },
+    { id: 'al_003', name: 'AstroLearn · Compatibility Test', brand: 'astrolearn', status: 'ACTIVE', objective: 'TRAFFIC', spend: 18700, impressions: 2400000, clicks: 31200, ctr: 1.30, conversions: 0, roas: null },
+    { id: 'al_004', name: 'AstroLearn · Weekly Retargeting', brand: 'astrolearn', status: 'PAUSED', objective: 'CONVERSIONS', spend: 8900, impressions: 310000, clicks: 2790, ctr: 0.90, conversions: 88, roas: 2.8 },
+    { id: 'hv_001', name: 'Healoved · Gut Health Protocol', brand: 'healoved', status: 'ACTIVE', objective: 'CONVERSIONS', spend: 54300, impressions: 1650000, clicks: 24750, ctr: 1.50, conversions: 543, roas: 6.1 },
+    { id: 'hv_002', name: 'Healoved · Sleep & Recovery', brand: 'healoved', status: 'ACTIVE', objective: 'CONVERSIONS', spend: 38900, impressions: 1240000, clicks: 17360, ctr: 1.40, conversions: 389, roas: 4.7 },
+    { id: 'hv_003', name: 'Healoved · Immunity Bundle', brand: 'healoved', status: 'ACTIVE', objective: 'CONVERSIONS', spend: 21600, impressions: 720000, clicks: 8640, ctr: 1.20, conversions: 194, roas: 3.9 },
+    { id: 'hv_004', name: 'Healoved · Subscription Launch', brand: 'healoved', status: 'PAUSED', objective: 'CONVERSIONS', spend: 15200, impressions: 480000, clicks: 4320, ctr: 0.90, conversions: 76, roas: 1.8 },
+  ],
+  summary: {
+    totalSpend: 341600,
+    totalImpressions: 15478000,
+    totalClicks: 193400,
+    avgCtr: 1.25,
+    activeCampaigns: 8,
+  },
+  _demo: true,
+}
+
 export async function GET() {
   try {
     const token = process.env.FACEBOOK_ACCESS_TOKEN
     if (!token) {
-      return NextResponse.json({ error: 'FACEBOOK_ACCESS_TOKEN not configured' }, { status: 500 })
+      return NextResponse.json(DUMMY_DATA)
     }
 
     // Fetch from all configured ad accounts
