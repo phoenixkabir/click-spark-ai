@@ -1,0 +1,197 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - link "lucid:v2" [ref=e4] [cursor=pointer]:
+      - /url: /
+    - navigation "Main navigation" [ref=e5]:
+      - link "Proof" [ref=e6] [cursor=pointer]:
+        - /url: /proof
+      - link "Waitlist" [ref=e7] [cursor=pointer]:
+        - /url: /waitlist
+    - link "Get early access" [ref=e9] [cursor=pointer]:
+      - /url: /waitlist
+      - generic [ref=e10]: Get early access
+      - generic [ref=e11]: →
+  - generic [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - generic [ref=e17]: fMRI-backed
+        - generic [ref=e18]: /
+        - generic [ref=e19]: peer-reviewed weights
+      - heading "Going viral is a skill, not luck ." [level=1] [ref=e20]:
+        - text: Going
+        - generic [ref=e21]: viral
+        - text: is a skill,
+        - text: not
+        - generic [ref=e22]:
+          - generic [ref=e23]: luck
+          - text: .
+      - paragraph [ref=e24]: The first tool that grades a reel against the brain networks that decide what gets shared. lucid:v2 runs your Instagram reels through a foundation model trained on 1,000+ hours of real fMRI brain scans. Reward, emotion, attention, memory. Each scored every second.
+      - paragraph [ref=e25]:
+        - link "Meta AI, 2024 · foundation model for in-silico neuroscience ↗" [ref=e26] [cursor=pointer]:
+          - /url: https://ai.meta.com/research/publications/a-foundation-model-of-vision-audition-and-language-for-in-silico-neuroscience/
+      - generic [ref=e27]:
+        - link "Get early access" [ref=e28] [cursor=pointer]:
+          - /url: /waitlist
+          - generic [ref=e29]: Get early access
+          - generic [ref=e30]: →
+        - link "or see the receipts" [ref=e31] [cursor=pointer]:
+          - /url: /proof
+          - generic [ref=e32]: or see the receipts
+    - complementary [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]: Live neuro score
+        - generic [ref=e36]:
+          - generic [ref=e37]: "7.8"
+          - generic [ref=e38]:
+            - generic [ref=e39]: high viral
+            - generic [ref=e40]: potential
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - term [ref=e43]: Reward
+            - definition [ref=e44]: "8.4"
+          - generic [ref=e45]:
+            - term [ref=e46]: Emotion
+            - definition [ref=e47]: "7.1"
+          - generic [ref=e48]:
+            - term [ref=e49]: Attention
+            - definition [ref=e50]: "8.0"
+          - generic [ref=e51]:
+            - term [ref=e52]: Memory
+            - definition [ref=e53]: "6.9"
+        - generic [ref=e54]:
+          - generic [ref=e55]: Activation signature
+          - generic [ref=e56]: Apr 11 · R1
+  - generic [ref=e58]:
+    - generic [ref=e59]: 20,484 cortical vertices/
+    - generic [ref=e60]: 1,000+ hours of fMRI/
+    - generic [ref=e61]: 720 real subjects/
+    - generic [ref=e62]: Reward · Emotion · Attention · Memory/
+    - generic [ref=e63]: Alpha engine · neuro scoring/
+    - generic [ref=e64]: Beta engine · scene understanding/
+    - generic [ref=e65]: Gamma engine · script intelligence/
+    - generic [ref=e66]: Apify creator scrape/
+    - generic [ref=e67]: yt-dlp download/
+    - generic [ref=e68]: 20,484 cortical vertices/
+    - generic [ref=e69]: 1,000+ hours of fMRI/
+    - generic [ref=e70]: 720 real subjects/
+    - generic [ref=e71]: Reward · Emotion · Attention · Memory/
+    - generic [ref=e72]: Alpha engine · neuro scoring/
+    - generic [ref=e73]: Beta engine · scene understanding/
+    - generic [ref=e74]: Gamma engine · script intelligence/
+    - generic [ref=e75]: Apify creator scrape/
+    - generic [ref=e76]: yt-dlp download/
+  - generic [ref=e79]:
+    - generic [ref=e80]:
+      - generic [ref=e81]: The product · three surfaces
+      - heading "Test. Research. Rewrite." [level=2] [ref=e82]:
+        - text: Test.
+        - generic [ref=e83]: Research.
+        - text: Rewrite.
+      - paragraph [ref=e84]: One loop. Every reel you ship gets smarter than the last.
+    - generic [ref=e86]:
+      - link "The mirror. Paste a reel. The Alpha engine maps 20,484 cortical vertices every second. You get a score, a scene timeline, and the exact moments where the brain went dark. Get early access" [ref=e87] [cursor=pointer]:
+        - /url: /waitlist
+        - generic [ref=e90]: Early access
+        - heading "The mirror." [level=3] [ref=e91]
+        - paragraph [ref=e92]: Paste a reel. The Alpha engine maps 20,484 cortical vertices every second. You get a score, a scene timeline, and the exact moments where the brain went dark.
+        - generic [ref=e93]:
+          - text: Get early access
+          - generic [ref=e94]: →
+      - link "The inspiration. Type a handle. We pull their 20 most-watched reels, transcribe them, and open a chat with the viral engine about what actually worked. Patterns, hooks, pacing. Get early access" [ref=e95] [cursor=pointer]:
+        - /url: /waitlist
+        - generic [ref=e98]: Early access
+        - heading "The inspiration." [level=3] [ref=e99]
+        - paragraph [ref=e100]: Type a handle. We pull their 20 most-watched reels, transcribe them, and open a chat with the viral engine about what actually worked. Patterns, hooks, pacing.
+        - generic [ref=e101]:
+          - text: Get early access
+          - generic [ref=e102]: →
+      - link "The execution. Paste a draft. The Gamma engine, anchored to fMRI patterns and real viral transcripts, returns a rewritten script plus shooting directions. Frame by frame. Get early access" [ref=e103] [cursor=pointer]:
+        - /url: /waitlist
+        - generic [ref=e106]: Early access
+        - heading "The execution." [level=3] [ref=e107]
+        - paragraph [ref=e108]: Paste a draft. The Gamma engine, anchored to fMRI patterns and real viral transcripts, returns a rewritten script plus shooting directions. Frame by frame.
+        - generic [ref=e109]:
+          - text: Get early access
+          - generic [ref=e110]: →
+  - figure "/ the thesis" [ref=e113]:
+    - generic: “
+    - blockquote [ref=e114]:
+      - text: Brains follow patterns. Most creators ship content
+      - generic [ref=e115]: blind
+      - text: . You won’t.
+    - generic [ref=e116]: / the thesis
+  - generic [ref=e119]:
+    - generic [ref=e120]:
+      - generic [ref=e121]: How the loop runs
+      - heading "Four networks. One number." [level=2] [ref=e122]:
+        - text: Four networks.
+        - generic [ref=e123]: One number.
+    - list [ref=e124]:
+      - listitem [ref=e125]:
+        - generic [ref=e126]: "01"
+        - generic [ref=e127]:
+          - generic [ref=e128]:
+            - heading "Reward" [level=3] [ref=e129]
+            - generic [ref=e130]: weight 30%
+          - paragraph [ref=e131]: Fires when your hook promises a payoff in the first two seconds. Orbitofrontal cortex. The “I want to share this” signal.
+      - listitem [ref=e132]:
+        - generic [ref=e133]: "02"
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - heading "Emotion" [level=3] [ref=e136]
+            - generic [ref=e137]: weight 25%
+          - paragraph [ref=e138]: Fires when a face reacts on camera or a beat lands with the cut. Insula + cingulate. The “I feel this” signal.
+      - listitem [ref=e139]:
+        - generic [ref=e140]: "03"
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - heading "Attention" [level=3] [ref=e143]
+            - generic [ref=e144]: weight 25%
+          - paragraph [ref=e145]: Fires when the edit refuses to let the eye rest. Parietal + frontal. The “I can’t look away” signal.
+      - listitem [ref=e146]:
+        - generic [ref=e147]: "04"
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - heading "Memory" [level=3] [ref=e150]
+            - generic [ref=e151]: weight 20%
+          - paragraph [ref=e152]: Fires when the close calls back to the open. Parahippocampal + DMN. The “I’ll remember this” signal.
+  - generic [ref=e155]:
+    - generic [ref=e156]:
+      - generic [ref=e157]: Built for creators who don’t guess
+      - heading "Ship the reel. Then ship a better one." [level=2] [ref=e158]:
+        - text: Ship the reel.
+        - generic [ref=e159]: Then
+        - text: ship a better one.
+      - paragraph [ref=e160]:
+        - text: The first tool that measured page speed
+        - generic [ref=e161]: won
+        - text: the web. The first tool that measures brain speed wins the feed.
+      - paragraph [ref=e162]: test · research · rewrite · ship · repeat
+    - figure "@tensorboy / creator, 260K / Read the research" [ref=e164]:
+      - blockquote [ref=e165]:
+        - text: I’ve posted 170 reels to 260K followers. I’m a sniper. I don’t post mindlessly, I
+        - generic [ref=e166]: re-engineer
+        - text: . I’ve shipped creator tooling with OpenAI and Google. This is the system I’ve always wanted behind every upload.
+      - generic [ref=e167]:
+        - generic [ref=e168]: "@tensorboy"
+        - generic [ref=e169]: /
+        - generic [ref=e170]: creator, 260K
+        - generic [ref=e171]: /
+        - link "Read the research" [ref=e172] [cursor=pointer]:
+          - /url: https://ai.meta.com/research/publications/tribe-v2/
+  - generic [ref=e175]:
+    - generic [ref=e176]:
+      - generic [ref=e177]: lucid:v2
+      - paragraph [ref=e178]: Hack virality at the neuro level.
+    - generic [ref=e179]:
+      - link "Proof" [ref=e180] [cursor=pointer]:
+        - /url: /proof
+      - link "Waitlist" [ref=e181] [cursor=pointer]:
+        - /url: /waitlist
+      - generic [ref=e182]: ·
+      - link "Privacy" [ref=e183] [cursor=pointer]:
+        - /url: /privacy
+      - link "Terms" [ref=e184] [cursor=pointer]:
+        - /url: /terms
+      - link "Contact" [ref=e185] [cursor=pointer]:
+        - /url: /contact

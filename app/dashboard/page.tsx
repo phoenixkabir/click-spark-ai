@@ -34,7 +34,7 @@ export default function DashboardPage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
           <a href="/" style={{ display: 'flex', alignItems: 'baseline', gap: '6px', textDecoration: 'none' }}>
             <span style={{ color: '#8b2e2e', ...SERIF, fontSize: '16px' }}>◆</span>
-            <span style={{ ...SERIF, fontSize: '16px', color: '#1a1814' }}>Click Spark<span style={{ color: '#8b2e2e' }}>.</span></span>
+            <span style={{ ...SERIF, fontSize: '16px', color: '#1a1814' }}>ClipSpark<span style={{ color: '#8b2e2e' }}>.</span></span>
           </a>
           <span style={{ ...MONO, color: '#a39c8e' }}>/ Dashboard</span>
         </div>

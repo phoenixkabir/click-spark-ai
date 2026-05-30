@@ -1,0 +1,9 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - img [ref=e41]
+    - generic [ref=e8]: TRIBE v2 · neural encoding
+    - generic [ref=e64]: Scoring Attention + Emotion networks…
+    - paragraph [ref=e72]: Usually 15–25 seconds
+  - button "Open Next.js Dev Tools" [ref=e35] [cursor=pointer]:
+    - img [ref=e36]
+  - alert [ref=e39]

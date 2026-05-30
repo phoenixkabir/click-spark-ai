@@ -11,12 +11,12 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params
   const concept = decodeConcept(id)
-  if (!concept) return { title: 'Score | Click Spark AI' }
+  if (!concept) return { title: 'Score | ClipSpark AI' }
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://clickspark.ai'
 
   return {
-    title: `Brain Score ${concept.overallScore}/100 | Click Spark AI`,
+    title: `Brain Score ${concept.overallScore}/100 | ClipSpark AI`,
     description: `"${concept.hook}" — Reward ${concept.rewardScore} · Attention ${concept.attentionScore} · Emotion ${concept.emotionScore} · Memory ${concept.memoryScore}`,
     openGraph: {
       title: `${concept.overallScore}/100 brain score`,

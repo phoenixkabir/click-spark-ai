@@ -18,7 +18,7 @@ function BrainNetworkViz({ reward, attention, emotion, memory }: { reward: numbe
   const edges = [[0,1],[0,3],[1,2],[2,3],[0,2],[1,3]]
   return (
     <div style={{ marginBottom: '32px', border: '1px solid var(--rule)', padding: '24px', background: 'var(--paper)' }}>
-      <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '16px' }}>TRIBE v2 · cortical activation map</div>
+      <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '16px' }}>brain · cortical activation map</div>
       <div style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: '24px', alignItems: 'center' }}>
         <svg viewBox="0 0 100 90" style={{ width: '100%' }}>
           <style>{`
@@ -177,7 +177,7 @@ export default function SharedResultsClient({ concept, shareId, showRescore = fa
           </div>
           <div>
             <div style={{ fontFamily: 'var(--font-sans)', fontSize: '16px', color: 'var(--ink)', fontWeight: 500 }}>/100 overall</div>
-            <div style={{ ...MONO, color: 'var(--faint)', marginTop: '4px' }}>TRIBE v2 brain encoding</div>
+            <div style={{ ...MONO, color: 'var(--faint)', marginTop: '4px' }}>brain encoding</div>
           </div>
         </div>
       </div>

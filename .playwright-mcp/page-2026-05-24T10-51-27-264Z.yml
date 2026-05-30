@@ -1,0 +1,246 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]: ◆
+        - generic [ref=e6]: Click Spark.
+        - generic [ref=e7]: v2 · TRIBE
+      - generic [ref=e8]:
+        - link "The method" [ref=e9] [cursor=pointer]:
+          - /url: "#"
+        - link "Sample report" [ref=e10] [cursor=pointer]:
+          - /url: "#"
+        - link "Proof" [ref=e11] [cursor=pointer]:
+          - /url: "#"
+        - link "Pricing" [ref=e12] [cursor=pointer]:
+          - /url: "#"
+      - link "Get access →" [ref=e13] [cursor=pointer]:
+        - /url: /score
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]: fMRI-trained · peer-reviewed weights
+        - heading "Anyone can ship. Almost no one gets remembered." [level=1] [ref=e18]:
+          - generic [ref=e19]: Anyone can ship.
+          - emphasis [ref=e20]: Almost no one
+          - generic [ref=e21]: gets remembered.
+        - paragraph [ref=e22]: The first tool that grades an ad before it runs — against the four brain networks that actually decide what gets remembered. Hand us a brand; ninety seconds later you have three concepts, ranked by how strongly 720 brains and 70,000 regions reacted. Reward, emotion, attention, memory. Each scored every second.
+        - generic [ref=e24]:
+          - generic [ref=e25]: URL —
+          - textbox "patagonia.com" [ref=e26]
+          - button "Generate concepts →" [disabled] [ref=e27]
+        - generic [ref=e28]:
+          - generic [ref=e29]: TRIBE v2 · 720 subjects · 70,000 regions
+          - generic [ref=e30]:
+            - text: or
+            - link "see a sample report ↗" [ref=e31] [cursor=pointer]:
+              - /url: /score
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: Live · brain score
+          - generic [ref=e36]: reading · 23 May
+        - generic [ref=e38]:
+          - generic [ref=e39]: "91"
+          - generic [ref=e40]:
+            - generic [ref=e41]: high recall
+            - generic [ref=e42]: 94th percentile · n=720
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]: Reward
+            - generic [ref=e48]: "94"
+          - generic [ref=e49]:
+            - generic [ref=e50]: Emotion
+            - generic [ref=e53]: "88"
+          - generic [ref=e54]:
+            - generic [ref=e55]: Attention
+            - generic [ref=e58]: "92"
+          - generic [ref=e59]:
+            - generic [ref=e60]: Memory
+            - generic [ref=e63]: "86"
+        - paragraph [ref=e64]: "Concept: “Old gear has the best stories.” · scored against 70,000 cortical regions."
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - generic [ref=e68]: 720 real subjects
+        - generic [ref=e69]: ◆
+      - generic [ref=e70]:
+        - generic [ref=e71]: 70,000 cortical regions
+        - generic [ref=e72]: ◆
+      - generic [ref=e73]:
+        - generic [ref=e74]: 1,200 hrs of fMRI
+        - generic [ref=e75]: ◆
+      - generic [ref=e76]:
+        - generic [ref=e77]: reward · emotion · attention · memory
+        - generic [ref=e78]: ◆
+      - generic [ref=e79]:
+        - generic [ref=e80]: TRIBE v2 · neural encoding model
+        - generic [ref=e81]: ◆
+      - generic [ref=e82]:
+        - generic [ref=e83]: 90-second turnaround
+        - generic [ref=e84]: ◆
+      - generic [ref=e85]:
+        - generic [ref=e86]: 3 concepts, ranked
+        - generic [ref=e87]: ◆
+      - generic [ref=e88]:
+        - generic [ref=e89]: one run per day
+        - generic [ref=e90]: ◆
+      - generic [ref=e91]:
+        - generic [ref=e92]: 720 real subjects
+        - generic [ref=e93]: ◆
+      - generic [ref=e94]:
+        - generic [ref=e95]: 70,000 cortical regions
+        - generic [ref=e96]: ◆
+      - generic [ref=e97]:
+        - generic [ref=e98]: 1,200 hrs of fMRI
+        - generic [ref=e99]: ◆
+      - generic [ref=e100]:
+        - generic [ref=e101]: reward · emotion · attention · memory
+        - generic [ref=e102]: ◆
+      - generic [ref=e103]:
+        - generic [ref=e104]: TRIBE v2 · neural encoding model
+        - generic [ref=e105]: ◆
+      - generic [ref=e106]:
+        - generic [ref=e107]: 90-second turnaround
+        - generic [ref=e108]: ◆
+      - generic [ref=e109]:
+        - generic [ref=e110]: 3 concepts, ranked
+        - generic [ref=e111]: ◆
+      - generic [ref=e112]:
+        - generic [ref=e113]: one run per day
+        - generic [ref=e114]: ◆
+    - generic [ref=e115]:
+      - generic [ref=e116]:
+        - generic [ref=e117]: § 01
+        - text: The product · three surfaces
+      - generic [ref=e118]: Click Spark Quarterly · Iss. 04
+    - generic [ref=e120]:
+      - generic [ref=e121]:
+        - heading "Scan. Compare. Concept." [level=2] [ref=e122]:
+          - text: Scan. Compare.
+          - emphasis [ref=e123]: Concept.
+        - paragraph [ref=e124]: One loop. Every brand you scan teaches the next concept how to land.
+      - generic [ref=e125]:
+        - article [ref=e126]:
+          - generic [ref=e127]: 01 · THE MIRROR
+          - generic [ref=e128]:
+            - heading "Scan a brand." [level=3] [ref=e129]
+            - paragraph [ref=e130]: Drop a URL. We read the site, the about page, and five close competitors. You get a one-page read of how the brand actually shows up — voice, posture, where it leans, where it hides.
+          - link "See a sample scan →" [ref=e132] [cursor=pointer]:
+            - /url: "#"
+        - article [ref=e133]:
+          - generic [ref=e134]: 02 · THE BENCH
+          - generic [ref=e135]:
+            - heading "Compare to rivals." [level=3] [ref=e136]
+            - paragraph [ref=e137]: Same prompt, five neighbours. The model returns each one's concept profile and ranks them against the brand you scanned. You learn fast where the category is crowded and where it is wide open.
+          - link "Run a head-to-head →" [ref=e139] [cursor=pointer]:
+            - /url: "#"
+        - article [ref=e140]:
+          - generic [ref=e141]: 03 · THE LEDE
+          - generic [ref=e142]:
+            - heading "Three concepts, ranked." [level=3] [ref=e143]
+            - paragraph [ref=e144]: Three ad concepts, each scored against the four brain networks. A winner the brain takes home, two it forgets by lunch. You see exactly which seconds carried it and which seconds went dark.
+          - link "Get the three concepts →" [ref=e146] [cursor=pointer]:
+            - /url: "#"
+    - generic [ref=e148]:
+      - generic [ref=e149]: "\""
+      - blockquote [ref=e150]:
+        - paragraph [ref=e151]:
+          - text: Most ads get scored after they fail.
+          - emphasis [ref=e152]: We score them before.
+          - text: The brain knows in two seconds; we just give you the receipt.
+      - paragraph [ref=e153]: — Editor’s note · the thesis
+    - generic [ref=e154]:
+      - generic [ref=e155]:
+        - generic [ref=e156]: § 02
+        - text: How the number is made
+      - generic [ref=e157]: Click Spark Quarterly · Iss. 04
+    - generic [ref=e158]:
+      - paragraph [ref=e159]: The four-network model
+      - heading "Four networks. One number." [level=2] [ref=e160]:
+        - text: Four networks.
+        - emphasis [ref=e161]: One number.
+      - paragraph [ref=e162]: Every score is a weighted blend of four cortical networks that real fMRI data shows decide what we remember and what we share. No vibes. No “ad-tech math.” Just the brain doing what it does.
+      - generic [ref=e163]:
+        - generic [ref=e164]:
+          - generic [ref=e165]:
+            - generic [ref=e166]: "01"
+            - generic [ref=e167]: weight 30%
+          - heading "Reward" [level=3] [ref=e168]
+          - paragraph [ref=e169]: "\"I want to share this.\""
+          - paragraph [ref=e170]: Fires when the hook promises a payoff in the first two seconds. The signal that decides if a brain leans in or scrolls past.
+          - generic [ref=e171]: Orbitofrontal cortex
+        - generic [ref=e172]:
+          - generic [ref=e173]:
+            - generic [ref=e174]: "02"
+            - generic [ref=e175]: weight 25%
+          - heading "Emotion" [level=3] [ref=e176]
+          - paragraph [ref=e177]: "\"I feel this.\""
+          - paragraph [ref=e178]: Fires when a face reacts on camera or a beat lands with the cut. The signal that turns an ad into a feeling instead of a message.
+          - generic [ref=e179]: Insula + cingulate
+        - generic [ref=e180]:
+          - generic [ref=e181]:
+            - generic [ref=e182]: "03"
+            - generic [ref=e183]: weight 25%
+          - heading "Attention" [level=3] [ref=e184]
+          - paragraph [ref=e185]: "\"I can't look away.\""
+          - paragraph [ref=e186]: Fires when the edit refuses to let the eye rest. The signal that decides whether the next five seconds get watched at all.
+          - generic [ref=e187]: Parietal + frontal
+        - generic [ref=e188]:
+          - generic [ref=e189]:
+            - generic [ref=e190]: "04"
+            - generic [ref=e191]: weight 20%
+          - heading "Memory" [level=3] [ref=e192]
+          - paragraph [ref=e193]: "\"I'll remember this.\""
+          - paragraph [ref=e194]: Fires when the close calls back to the open. The signal that decides if the brand survives until the next morning.
+          - generic [ref=e195]: Parahippocampal + DMN
+      - generic [ref=e196]:
+        - generic [ref=e197]: Composite weights →
+        - generic [ref=e203]: Reward · Emotion · Attention · Memory
+    - generic [ref=e204]:
+      - generic [ref=e205]:
+        - generic [ref=e206]: § 03
+        - text: Built for teams that won't guess
+      - generic [ref=e207]: Click Spark Quarterly · Iss. 04
+    - generic [ref=e209]:
+      - generic [ref=e210]:
+        - heading "Ship the ad. Then ship a better one." [level=2] [ref=e211]:
+          - text: Ship the ad. Then ship a
+          - emphasis [ref=e212]: better one.
+        - paragraph [ref=e213]: The first tool that measured page-speed won the web. The first tool that measures brain-speed wins the feed. Get a sample report in ninety seconds — one run on us, no card.
+        - generic [ref=e214]:
+          - button "Generate concepts →" [ref=e215] [cursor=pointer]
+          - link "Read the research ↗" [ref=e216] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=e217]:
+        - paragraph [ref=e218]: “We were going to spend $480k testing this in market. Click Spark told us in ninety seconds which one to spend it on. The winner did 2.7× the recall of the runner-up.”
+        - paragraph [ref=e219]: — Brand director, outdoor apparel · 12 person team
+    - generic [ref=e221]:
+      - generic [ref=e222]:
+        - generic [ref=e223]: Click Spark.
+        - paragraph [ref=e224]: Brain-encoded creative. Read before you spend.
+      - generic [ref=e225]:
+        - generic [ref=e226]:
+          - generic [ref=e227]: Product
+          - link "Scan" [ref=e228] [cursor=pointer]:
+            - /url: "#"
+          - link "Compare" [ref=e229] [cursor=pointer]:
+            - /url: "#"
+          - link "Concepts" [ref=e230] [cursor=pointer]:
+            - /url: "#"
+        - generic [ref=e231]:
+          - generic [ref=e232]: Research
+          - link "The four networks" [ref=e233] [cursor=pointer]:
+            - /url: "#"
+          - link "TRIBE v2 paper" [ref=e234] [cursor=pointer]:
+            - /url: "#"
+          - link "Methods note" [ref=e235] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=e236]:
+        - generic [ref=e237]: ©2026 Click Spark
+        - generic [ref=e238]:
+          - link "Privacy" [ref=e239] [cursor=pointer]:
+            - /url: "#"
+          - link "Terms" [ref=e240] [cursor=pointer]:
+            - /url: "#"
+          - link "Contact" [ref=e241] [cursor=pointer]:
+            - /url: "#"
+  - button "Open Next.js Dev Tools" [ref=e247] [cursor=pointer]:
+    - img [ref=e248]

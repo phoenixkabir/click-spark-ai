@@ -1,0 +1,27 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Score Your Creative
+      - heading "Paste your script. See the brain score." [level=1] [ref=e5]:
+        - text: Paste your script.
+        - emphasis [ref=e6]: See the brain score.
+      - paragraph [ref=e7]: Drop your hook, visual, and script. TRIBE v2 scores how deeply it encodes across Reward, Attention, Emotion, and Memory.
+      - generic [ref=e8]:
+        - generic [ref=e9]:
+          - generic [ref=e10]: Hook — opening line
+          - textbox "e.g. You're not drinking water. You're refusing to be boring." [ref=e11]
+        - generic [ref=e12]:
+          - generic [ref=e13]: Visual — what's in the shot
+          - textbox "e.g. Person at a crowded party, standing out with Liquid Death while everyone else has generic drinks" [ref=e14]
+        - generic [ref=e15]:
+          - generic [ref=e16]: Script — 15-second angle
+          - 'textbox "e.g. Open on crowded party. Everyone blending in. One person stands out. Text: Refuse to be boring." [ref=e17]'
+        - button "Score my creative →" [disabled] [ref=e18]
+      - paragraph [ref=e19]:
+        - text: Or
+        - link "analyze a brand URL" [ref=e20] [cursor=pointer]:
+          - /url: /
+        - text: instead
+  - button "Open Next.js Dev Tools" [ref=e26] [cursor=pointer]:
+    - img [ref=e27]
+  - alert [ref=e30]

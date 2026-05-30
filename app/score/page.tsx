@@ -166,7 +166,7 @@ export default function ScorePage() {
       }}>
         <BrainAnimation />
         <div style={{ ...MONO, color: '#8b2e2e', marginBottom: '20px', textAlign: 'center' }}>
-          TRIBE v2 · neural encoding
+          neural encoding · fMRI
         </div>
         <div style={{ ...SERIF, fontSize: '28px', color: '#1a1814', textAlign: 'center', marginBottom: '12px', lineHeight: 1.2 }}>
           {LOADING_STEPS[loadingStep]}
@@ -197,7 +197,7 @@ export default function ScorePage() {
       <nav style={{ borderBottom: '1px solid #1a1814', padding: '18px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'baseline', gap: '6px', textDecoration: 'none' }}>
           <span style={{ color: '#8b2e2e', ...SERIF, fontSize: '18px' }}>◆</span>
-          <span style={{ ...SERIF, fontSize: '18px', color: '#1a1814' }}>Click Spark<span style={{ color: '#8b2e2e' }}>.</span></span>
+          <span style={{ ...SERIF, fontSize: '18px', color: '#1a1814' }}>ClipSpark<span style={{ color: '#8b2e2e' }}>.</span></span>
         </a>
         <a href="/" style={{ ...MONO, color: '#a39c8e', textDecoration: 'none', letterSpacing: '0.18em' }}>← Back</a>
       </nav>
@@ -211,7 +211,7 @@ export default function ScorePage() {
             <em>See the brain score.</em>
           </h1>
           <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: 'var(--dim)', lineHeight: 1.6, margin: '0 0 40px', maxWidth: '480px' }}>
-            Drop your hook, visuals, and script in one block — or just a single line. TRIBE v2 scores how deeply it encodes across Reward, Attention, Emotion, and Memory. Then we tell you exactly how to make it stronger.
+            Drop your hook, visuals, and script in one block — or just a single line. Our brain model scores how deeply it encodes across Reward, Attention, Emotion, and Memory. Then we tell you exactly how to make it stronger.
           </p>
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -359,7 +359,7 @@ Script: Open on a crowded house party. Zoom in on one person — confident, tota
 
           <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--faint)' }}>
-              15–25 sec · powered by TRIBE v2 fMRI weights
+              15–25 sec · model trained on 720 brains · fMRI research
             </p>
             <a href="/sample" style={{ ...MONO, color: 'var(--faint)', textDecoration: 'underline', letterSpacing: '0.18em' }}>
               See a sample →

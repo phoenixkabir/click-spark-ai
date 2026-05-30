@@ -196,7 +196,7 @@ export default function OrganicEnginePage() {
                     href={`/score?prefill=${encodeURIComponent(content[activeTab]?.slice(0, 200) || '')}`}
                     style={{ ...MONO, color: 'var(--dim)', background: 'transparent', border: '1px solid var(--rule)', padding: '8px 14px', textDecoration: 'none' }}
                   >
-                    Score with TRIBE v2 →
+                    Score with brain model →
                   </a>
                 </div>
               </div>

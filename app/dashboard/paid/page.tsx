@@ -347,7 +347,7 @@ Script: Open on a crowded house party. One person stands out. They're holding a 
                   cursor: launching || !creative.trim() ? 'not-allowed' : 'pointer',
                 }}
               >
-                {launching ? 'Scoring with TRIBE v2…' : 'Score + launch →'}
+                {launching ? 'Scoring…' : 'Score + launch →'}
               </button>
 
               <p style={{ ...MONO, color: 'var(--faint)', margin: 0, textAlign: 'center' }}>

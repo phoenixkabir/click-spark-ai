@@ -1,0 +1,50 @@
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e247] [cursor=pointer]:
+    - img [ref=e248]
+  - alert [ref=e261]
+  - main [ref=e342]:
+    - generic [ref=e343]:
+      - generic [ref=e344]:
+        - generic [ref=e345]:
+          - generic [ref=e346]: The report on
+          - heading "Red Bull" [level=1] [ref=e347]
+          - paragraph [ref=e348]: "Run #73264 · 24 May 2026"
+        - paragraph [ref=e349]: One concept the brain takes home. Two it forgets by lunch.
+        - button "← Scan another brand" [ref=e350] [cursor=pointer]
+      - generic [ref=e351]:
+        - generic [ref=e352]:
+          - generic [ref=e353]:
+            - generic [ref=e354]:
+              - generic [ref=e355]:
+                - generic [ref=e356]: Post this
+                - generic [ref=e357]: Lede · concept 01
+              - heading "“Dare to Push Your Limits with Red Bull’s Boldest Feat Yet!”" [level=2] [ref=e358]
+              - paragraph [ref=e359]: A breathtaking skydive through rings of fire, the sudden gasp of risk captures attention. The jumper lands with adrenaline-fueled excitement, epitomizing Red Bull’s call to defy the impossible.
+            - generic [ref=e360]:
+              - generic [ref=e361]: Brain
+              - generic [ref=e362]: "88"
+              - generic [ref=e363]: of one hundred
+          - generic [ref=e364]:
+            - generic [ref=e365]:
+              - generic [ref=e366]: Reward
+              - generic [ref=e367]: "90"
+            - generic [ref=e368]:
+              - generic [ref=e369]: Attention
+              - generic [ref=e370]: "95"
+            - generic [ref=e371]:
+              - generic [ref=e372]: Emotion
+              - generic [ref=e373]: "85"
+          - paragraph [ref=e374]: The phrase 'Dare to Push Your Limits' ignites a powerful desire for adventure and thrill, while the visual of a skydiver through fire evokes excitement and surprise.
+        - generic [ref=e375]:
+          - generic [ref=e376]:
+            - generic [ref=e377]: "02"
+            - generic [ref=e378]:
+              - paragraph [ref=e379]: “Transform Your Potential Into Kinetic Energy with Red Bull.”
+              - paragraph [ref=e380]: The phrase 'Transform Your Potential Into Kinetic Energy' ignites a sense of aspiration and excitement, making the viewer desire the energy and empowerment associated with Red Bull.
+            - generic [ref=e381]: "82"
+          - generic [ref=e382]:
+            - generic [ref=e383]: "03"
+            - generic [ref=e384]:
+              - paragraph [ref=e385]: “Join the Red Bull Team, Where Adventure Never Stops.”
+              - paragraph [ref=e386]: The hook and visuals evoke a sense of adventure and excitement, making viewers crave the exhilarating experiences associated with Red Bull.
+            - generic [ref=e387]: "78"

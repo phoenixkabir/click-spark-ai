@@ -166,7 +166,7 @@ Generate 3 UGC scripts for TikTok and Instagram Reels.`}
                 ))}
               </div>
               <p style={{ ...MONO, color: 'var(--faint)', marginTop: '12px', lineHeight: 1.6 }}>
-                AI avatars via HeyGen · accounts managed by Click Spark · native-feel content only
+                AI avatars via HeyGen · accounts managed by ClipSpark AI · native-feel content only
               </p>
             </div>
           </div>
@@ -177,7 +177,7 @@ Generate 3 UGC scripts for TikTok and Instagram Reels.`}
               <div style={{ border: '1px dashed rgba(26,24,20,0.15)', padding: '60px 40px', textAlign: 'center' }}>
                 <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '12px' }}>Scripts will appear here</div>
                 <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: 'var(--dim)', lineHeight: 1.6 }}>
-                  Enter your brand brief and generate 3 creator-native scripts — each with a unique angle, persona, and platform format. Each script gets a TRIBE v2 brain score before it goes into production.
+                  Enter your brand brief and generate 3 creator-native scripts — each with a unique angle, persona, and platform format. Each script gets a brain score before it goes into production.
                 </p>
                 {/* Demo preview */}
                 <div style={{ marginTop: '32px', textAlign: 'left', border: '1px solid var(--rule)', padding: '20px', background: 'var(--paper)' }}>
@@ -200,7 +200,7 @@ Generate 3 UGC scripts for TikTok and Instagram Reels.`}
               </div>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '4px' }}>{scripts.length} scripts generated · each TRIBE v2 scored</div>
+                <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '4px' }}>{scripts.length} scripts generated · each brain scored</div>
                 {scripts.map((script, i) => (
                   <div key={i} style={{ border: '1px solid var(--rule)', borderTop: '2px solid #6a6258', padding: '24px', background: 'var(--paper)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>

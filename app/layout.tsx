@@ -20,7 +20,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Click Spark',
+  title: 'ClipSpark AI',
   description: 'Brain-validated content. Before you spend a rupee.',
 }
 

@@ -15,7 +15,7 @@ const FEATURES = [
     body: 'Drop two brand URLs. Get a side-by-side neural profile — Reward vs Attention vs Emotion vs Memory for each brand. See where your category is crowded and where the white space is.',
     agents: [
       { step: 'Crawl', label: 'Brand Crawler', desc: 'Scrapes 200+ touchpoints per brand — ads, landing pages, video' },
-      { step: 'Score', label: 'TRIBE v2 Engine', desc: 'Runs each asset through fMRI-trained neural weights' },
+      { step: 'Score', label: 'Brain Scoring Engine', desc: 'Runs each asset through fMRI-trained neural weights' },
       { step: 'Map', label: 'Gap Analyst', desc: 'Identifies unclaimed neural territory in your category' },
       { step: 'Brief', label: 'Creative Strategist', desc: 'Outputs positioning brief to own the gap' },
     ],
@@ -26,7 +26,7 @@ const FEATURES = [
     slug: 'research',
     label: 'Research Papers',
     tagline: 'The science behind every score, peer-reviewed.',
-    body: 'Full TRIBE v2 methodology, model weights, and the fMRI study data behind every brain score. 1,200 hours of neural response data from 720 subjects across 20,484 cortical vertices.',
+    body: 'Full model methodology, model weights, and the fMRI study data behind every brain score. 1,200 hours of neural response data from 720 subjects across 20,484 cortical vertices.',
     agents: [
       { step: 'Encode', label: 'Neural Encoder', desc: 'Maps visual/audio/text signals to cortical vertex activations' },
       { step: 'Weight', label: 'V-JEPA2', desc: 'Video-temporal features weighted on 64ms response windows' },
@@ -43,7 +43,7 @@ const FEATURES = [
     body: 'Scan up to five competitors in one run. See who owns Reward, who dominates Memory, and where the gap is. Get a creative brief to outperform each one.',
     agents: [
       { step: 'Detect', label: 'Ad Monitor', desc: 'Tracks competitor ad library changes in real time' },
-      { step: 'Score', label: 'TRIBE v2', desc: 'Brain scores every competitor creative automatically' },
+      { step: 'Score', label: 'Brain Model', desc: 'Brain scores every competitor creative automatically' },
       { step: 'Alert', label: 'Gap Sentinel', desc: 'Notifies when a competitor moves into unclaimed space' },
       { step: 'React', label: 'Counter-Brief', desc: 'Generates counter-positioning brief within minutes' },
     ],
@@ -59,7 +59,7 @@ const FEATURES = [
       { step: 'Share', label: 'Report Engine', desc: 'Generates shareable brain score cards with one click' },
       { step: 'Comment', label: 'Annotation Layer', desc: 'Teams annotate scores with campaign context and outcome data' },
       { step: 'Learn', label: 'Outcome Logger', desc: 'Logs real ROAS/CTR against predicted brain scores' },
-      { step: 'Train', label: 'Fine-tuner', desc: 'Re-weights TRIBE v2 predictions on your brand\'s outcome data' },
+      { step: 'Train', label: 'Fine-tuner', desc: 'Re-weights the model\'s predictions on your brand\'s outcome data' },
     ],
     metric: { value: '67%', label: 'reduction in creative revision cycles with shared brain scoring' },
   },
@@ -124,7 +124,7 @@ export default function ComingSoonPage() {
       }}>
         <a href="/" style={{ display: 'flex', alignItems: 'baseline', gap: '6px', textDecoration: 'none' }}>
           <span style={{ color: '#8b2e2e', ...SERIF, fontSize: '18px' }}>◆</span>
-          <span style={{ ...SERIF, fontSize: '18px', color: '#1a1814' }}>Click Spark<span style={{ color: '#8b2e2e' }}>.</span></span>
+          <span style={{ ...SERIF, fontSize: '18px', color: '#1a1814' }}>ClipSpark<span style={{ color: '#8b2e2e' }}>.</span></span>
         </a>
         <div style={{ display: 'flex', gap: '24px' }}>
           <a href="/score" style={{ ...MONO, color: 'var(--dim)', textDecoration: 'none' }}>Score a creative</a>

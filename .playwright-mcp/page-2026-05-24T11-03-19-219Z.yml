@@ -1,0 +1,49 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]: Brain Score
+      - generic [ref=e5]:
+        - generic [ref=e6]: "73"
+        - generic [ref=e7]:
+          - generic [ref=e8]: /100 overall
+          - generic [ref=e9]: TRIBE v2 brain encoding
+    - generic [ref=e10]:
+      - generic [ref=e11]: Hook
+      - paragraph [ref=e12]: “Old gear has the best stories.”
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - generic [ref=e16]: RewardDesire & surprise
+          - generic [ref=e17]: "75"
+        - paragraph [ref=e20]: The nostalgic hook of 'Old gear has the best stories' evokes a sense of adventure and personal history, driving desire for the product.
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: AttentionVisual command
+          - generic [ref=e24]: "70"
+        - paragraph [ref=e27]: The visual of a faded jacket and the dynamic action of a kid trying it on create a compelling scene that captures the viewer's focus.
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - generic [ref=e30]: EmotionHuman connection
+          - generic [ref=e31]: "80"
+        - paragraph [ref=e34]: The imagery of the jacket and the voiceover's playful tone elicit warm feelings of connection to shared experiences and childhood memories.
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - generic [ref=e37]: MemoryLasting impression
+          - generic [ref=e38]: "65"
+        - paragraph [ref=e41]: The distinct visual of the oversized jacket and the mention of Patagonia create a memorable image that stands out, though it could be more unique.
+    - generic [ref=e42]:
+      - button "Copy share link" [ref=e43] [cursor=pointer]:
+        - img [ref=e44]
+        - text: Copy share link
+      - link "View score card image" [ref=e46] [cursor=pointer]:
+        - /url: /api/og/eyJoIjoiT2xkIGdlYXIgaGFzIHRoZSBiZXN0IHN0b3JpZXMuIiwiaSI6IkZhZGVkIGphY2tldCBoYW5naW5nIG9uIGEgaG9vaywgaGFuZHMgcGljayBpdCB1cCwga2lkIHRyaWVzIGl0IG9uIHdpdGggc2xlZXZlcyBwYXN0IGhlciBrbnVja2xlcyIsInYiOiJPcGVuIG9uIGZhZGVkIGphY2tldC4gSGFuZHMgcGljayBpdCB1cC4gVm9pY2UgaGFsZi1sYXVnaGluZzogVGhpcyBvbmUncyBiZWVuIHRvIFBhdGFnb25pYS4gVHdpY2UuIEN1dCB0byBraWQgdHJ5aW5nIGl0IG9uLiBMb2dvLCBubyB0YWdsaW5lLiIsInIiOjc1LCJhIjo3MCwiZSI6ODAsIm0iOjY1LCJvIjo3MywieCI6eyJyZXdhcmQiOiJUaGUgbm9zdGFsZ2ljIGhvb2sgb2YgJ09sZCBnZWFyIGhhcyB0aGUgYmVzdCBzdG9yaWVzJyBldm9rZXMgYSBzZW5zZSBvZiBhZHZlbnR1cmUgYW5kIHBlcnNvbmFsIGhpc3RvcnksIGRyaXZpbmcgZGVzaXJlIGZvciB0aGUgcHJvZHVjdC4iLCJhdHRlbnRpb24iOiJUaGUgdmlzdWFsIG9mIGEgZmFkZWQgamFja2V0IGFuZCB0aGUgZHluYW1pYyBhY3Rpb24gb2YgYSBraWQgdHJ5aW5nIGl0IG9uIGNyZWF0ZSBhIGNvbXBlbGxpbmcgc2NlbmUgdGhhdCBjYXB0dXJlcyB0aGUgdmlld2VyJ3MgZm9jdXMuIiwiZW1vdGlvbiI6IlRoZSBpbWFnZXJ5IG9mIHRoZSBqYWNrZXQgYW5kIHRoZSB2b2ljZW92ZXIncyBwbGF5ZnVsIHRvbmUgZWxpY2l0IHdhcm0gZmVlbGluZ3Mgb2YgY29ubmVjdGlvbiB0byBzaGFyZWQgZXhwZXJpZW5jZXMgYW5kIGNoaWxkaG9vZCBtZW1vcmllcy4iLCJtZW1vcnkiOiJUaGUgZGlzdGluY3QgdmlzdWFsIG9mIHRoZSBvdmVyc2l6ZWQgamFja2V0IGFuZCB0aGUgbWVudGlvbiBvZiBQYXRhZ29uaWEgY3JlYXRlIGEgbWVtb3JhYmxlIGltYWdlIHRoYXQgc3RhbmRzIG91dCwgdGhvdWdoIGl0IGNvdWxkIGJlIG1vcmUgdW5pcXVlLiJ9fQ
+        - img [ref=e47]
+    - button "Tweak and re-score →" [ref=e50] [cursor=pointer]
+    - generic [ref=e51]:
+      - link "← Score another" [ref=e52] [cursor=pointer]:
+        - /url: /score
+      - link "Analyze a brand" [ref=e53] [cursor=pointer]:
+        - /url: /
+  - button "Open Next.js Dev Tools" [ref=e59] [cursor=pointer]:
+    - img [ref=e60]
+  - alert [ref=e63]

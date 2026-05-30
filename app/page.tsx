@@ -7,7 +7,7 @@ const MARQUEE_ITEMS = [
   'Meta Ads · win now',
   'AI UGC · subconscious layer',
   'LinkedIn · YouTube · SEO · win forever',
-  'TRIBE v2 · 720 subjects · 70,000 regions',
+  'brain encoding · 720 subjects · 70,000 regions',
   'score before you spend',
   'distribution OS for companies',
   'paid · owned · earned · in one system',
@@ -31,7 +31,7 @@ function SectionRule({ num, title }: { num: string; title: string }) {
         <span style={{ color: '#8b2e2e', marginRight: '10px' }}>§ {num}</span>
         {title}
       </span>
-      <span style={{ ...MONO, color: '#6a6258' }}>Click Spark · Distribution OS</span>
+      <span style={{ ...MONO, color: '#6a6258' }}>ClipSpark AI · Distribution OS</span>
     </div>
   )
 }
@@ -85,7 +85,7 @@ export default function LandingPage() {
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
           <span style={{ color: '#8b2e2e', ...SERIF, fontSize: '18px' }}>◆</span>
           <span style={{ ...SERIF, fontSize: '18px', color: '#1a1814' }}>
-            Click Spark<span style={{ color: '#8b2e2e' }}>.</span>
+            ClipSpark<span style={{ color: '#8b2e2e' }}>.</span>
           </span>
           <span style={{ ...MONO, color: '#a39c8e', fontSize: '10px', letterSpacing: '0.18em', marginLeft: '2px' }}>Distribution OS</span>
         </div>
@@ -131,7 +131,7 @@ export default function LandingPage() {
             </h1>
 
             <p style={{ fontFamily: 'var(--font-sans)', fontSize: '17px', color: '#6a6258', lineHeight: 1.55, maxWidth: '520px', marginTop: '28px' }}>
-              ClipSpark is the distribution OS for companies that shipped. Three engines running in parallel: Meta Ads to win now, AI UGC running in the background as your subconscious layer, and owned content compounding forever. Every piece scored against TRIBE v2 — the brain model trained on 1,200 hours of real fMRI — before it goes out.
+              ClipSpark AI is the distribution OS for companies that shipped. Three engines running in parallel: Meta Ads to win now, AI UGC running in the background as your subconscious layer, and owned content compounding forever. Every piece scored by a foundation model trained on 1,200 hours of real fMRI — before it goes out.
             </p>
 
             <div style={{ display: 'flex', gap: '12px', marginTop: '32px' }}>
@@ -197,7 +197,7 @@ export default function LandingPage() {
             ))}
             <div style={{ borderTop: '2px solid #1a1814', marginTop: '8px', paddingTop: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ ...MONO, color: '#a39c8e' }}>TRIBE v2 avg score</span>
+                <span style={{ ...MONO, color: '#a39c8e' }}>avg brain score</span>
                 <span style={{ ...SERIF, fontSize: '28px', color: '#8b2e2e', fontVariantNumeric: 'tabular-nums' }}>84</span>
               </div>
               <div style={{ height: '3px', background: 'var(--rule)', marginTop: '8px' }}>
@@ -235,7 +235,7 @@ export default function LandingPage() {
               <em style={{ color: '#8b2e2e', fontStyle: 'italic' }}>you spend.</em>
             </h2>
             <p style={{ ...SERIF, fontStyle: 'italic', fontSize: '18px', color: '#6a6258', marginTop: '16px' }}>
-              Every ad gets a TRIBE v2 brain score before it reaches a single dollar of spend. Connect your Meta account. The model does the rest.
+              Every ad gets a brain score before it reaches a single dollar of spend. Connect your Meta account. The model does the rest.
             </p>
             <a href="/dashboard/paid" style={{
               display: 'inline-block', marginTop: '24px',
@@ -247,8 +247,8 @@ export default function LandingPage() {
           <div>
             {[
               { step: '01', title: 'Paste your creative.', body: 'Drop the hook, visual description, and script. Or paste everything in one block — we parse it.' },
-              { step: '02', title: 'Get the brain score.', body: 'TRIBE v2 runs against 70,000 cortical regions. You see Reward, Attention, Emotion, Memory — and exactly why each number landed where it did.' },
-              { step: '03', title: 'Launch directly to Meta.', body: 'Connect your Ads Manager. Set budget, targeting, and schedule. The campaign goes live from inside Click Spark — no switching tabs.' },
+              { step: '02', title: 'Get the brain score.', body: 'Our model runs against 70,000 cortical regions. You see Reward, Attention, Emotion, Memory — and exactly why each number landed where it did.' },
+              { step: '03', title: 'Launch directly to Meta.', body: 'Connect your Ads Manager. Set budget, targeting, and schedule. The campaign goes live from inside ClipSpark AI — no switching tabs.' },
               { step: '04', title: 'Track real outcomes.', body: 'CTR, ROAS, CPA — all flowing back. Every campaign that runs trains the model to predict the next one better.' },
             ].map(({ step, title, body }, i) => (
               <article key={step} style={{
@@ -397,7 +397,7 @@ export default function LandingPage() {
       </section>
 
       {/* §04 — The intelligence layer */}
-      <SectionRule num="04" title="The Intelligence Layer · TRIBE v2" />
+      <SectionRule num="04" title="The Intelligence Layer · Brain Encoding" />
       <section style={{ padding: '40px 40px 56px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: '56px', alignItems: 'center' }}>
           <div>
@@ -405,7 +405,7 @@ export default function LandingPage() {
               Everything scored<br />before it ships.
             </h2>
             <p style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', color: '#6a6258', lineHeight: 1.6, marginTop: '20px', maxWidth: '480px' }}>
-              Meta&rsquo;s TRIBE v2 is a foundation model trained on 1,200 hours of fMRI brain scans across 720 subjects. It predicts how 20,484 cortical vertices respond to video, second by second. We run it on every creative before it leaves the platform — paid, UGC, or organic.
+              Our scoring engine is a foundation model trained on 1,200 hours of fMRI brain scans across 720 subjects. It predicts how 20,484 cortical vertices respond to video, second by second. We run it on every creative before it leaves the platform — paid, UGC, or organic.
             </p>
             <div style={{ display: 'flex', gap: '40px', marginTop: '32px' }}>
               {[['720', 'real subjects'], ['70K', 'cortical regions'], ['1,200h', 'of fMRI data']].map(([num, label]) => (
@@ -484,14 +484,14 @@ export default function LandingPage() {
       }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
           <span style={{ color: '#8b2e2e', ...SERIF, fontSize: '16px' }}>◆</span>
-          <span style={{ ...SERIF, fontSize: '16px', color: '#1a1814' }}>Click Spark<span style={{ color: '#8b2e2e' }}>.</span></span>
+          <span style={{ ...SERIF, fontSize: '16px', color: '#1a1814' }}>ClipSpark<span style={{ color: '#8b2e2e' }}>.</span></span>
         </div>
         <div style={{ display: 'flex', gap: '24px' }}>
           {[['Dashboard', '/dashboard'], ['Score', '/score'], ['Waitlist', '/waitlist'], ['Contact', '/coming-soon']].map(([l, h]) => (
             <a key={l} href={h} style={{ ...MONO, color: '#a39c8e', textDecoration: 'none' }}>{l}</a>
           ))}
         </div>
-        <span style={{ ...MONO, color: '#a39c8e' }}>Powered by TRIBE v2 · Meta AI Research</span>
+        <span style={{ ...MONO, color: '#a39c8e' }}>Powered by fMRI research · 720 subjects · peer-reviewed</span>
       </footer>
 
     </main>

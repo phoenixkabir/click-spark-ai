@@ -41,7 +41,7 @@ export async function GET(
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 32 }}>
           <div style={{ width: 20, height: 2, background: '#00d68f' }} />
           <span style={{ fontSize: 11, color: '#00d68f', fontWeight: 700, letterSpacing: '0.2em' }}>
-            TRIBE v2 BRAIN SCORE
+            BRAIN SCORE
           </span>
         </div>
 
@@ -76,7 +76,7 @@ export async function GET(
 
         {/* Footer */}
         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 32, paddingTop: 20, borderTop: '1px solid #1e1e1e' }}>
-          <span style={{ color: '#333', fontSize: 11 }}>Click Spark AI</span>
+          <span style={{ color: '#333', fontSize: 11 }}>ClipSpark AI</span>
           <span style={{ color: '#333', fontSize: 11 }}>clickspark.ai</span>
         </div>
       </div>,

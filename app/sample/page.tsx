@@ -19,7 +19,7 @@ export default function SamplePage() {
       <nav style={{ borderBottom: '1px solid #1a1814', padding: '18px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'baseline', gap: '6px', textDecoration: 'none' }}>
           <span style={{ color: '#8b2e2e', ...SERIF, fontSize: '18px' }}>◆</span>
-          <span style={{ ...SERIF, fontSize: '18px', color: '#1a1814' }}>Click Spark<span style={{ color: '#8b2e2e' }}>.</span></span>
+          <span style={{ ...SERIF, fontSize: '18px', color: '#1a1814' }}>ClipSpark<span style={{ color: '#8b2e2e' }}>.</span></span>
         </a>
         <a href="/" style={{ ...MONO, color: '#a39c8e', textDecoration: 'none', letterSpacing: '0.18em' }}>← Home</a>
       </nav>
@@ -39,7 +39,7 @@ export default function SamplePage() {
             </div>
             <div>
               <div style={{ fontFamily: 'var(--font-sans)', fontSize: '16px', color: 'var(--ink)', fontWeight: 500 }}>/100 overall</div>
-              <div style={{ ...MONO, color: 'var(--faint)', marginTop: '4px' }}>TRIBE v2 brain encoding</div>
+              <div style={{ ...MONO, color: 'var(--faint)', marginTop: '4px' }}>brain encoding</div>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function SamplePage() {
         <div style={{ borderTop: '1px solid var(--rule)', paddingTop: '32px', marginBottom: '32px' }}>
           <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '12px' }}>About this score</div>
           <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: 'var(--dim)', lineHeight: 1.6 }}>
-            This is a real output from Click Spark. Drop any brand URL and get three concepts like this — each scored against 70,000 cortical regions from 720 fMRI subjects. The weights come from peer-reviewed neuroscience, not from engagement metrics or ad platform data.
+            This is a real output from ClipSpark AI. Drop any brand URL and get three concepts like this — each scored against 70,000 cortical regions from 720 fMRI subjects. The weights come from peer-reviewed neuroscience, not from engagement metrics or ad platform data.
           </p>
         </div>
 

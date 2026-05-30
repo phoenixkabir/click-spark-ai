@@ -53,7 +53,7 @@ export default function WaitlistPage() {
       <nav style={{ borderBottom: '1px solid #1a1814', padding: '18px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <a href="/" style={{ display: 'flex', alignItems: 'baseline', gap: '6px', textDecoration: 'none' }}>
           <span style={{ color: '#8b2e2e', ...SERIF, fontSize: '18px' }}>◆</span>
-          <span style={{ ...SERIF, fontSize: '18px', color: '#1a1814' }}>Click Spark<span style={{ color: '#8b2e2e' }}>.</span></span>
+          <span style={{ ...SERIF, fontSize: '18px', color: '#1a1814' }}>ClipSpark<span style={{ color: '#8b2e2e' }}>.</span></span>
         </a>
         <a href="/" style={{ ...MONO, color: '#a39c8e', textDecoration: 'none', letterSpacing: '0.18em' }}>← Back</a>
       </nav>
@@ -68,7 +68,7 @@ export default function WaitlistPage() {
                 We'll be in touch.
               </h1>
               <p style={{ fontFamily: 'var(--font-sans)', fontSize: '16px', color: 'var(--dim)', lineHeight: 1.6, marginBottom: '40px' }}>
-                You're among the first to know when Click Spark opens. We're running a closed beta with a small group of brands and agencies — we'll reach out directly.
+                You're among the first to know when ClipSpark AI opens. We're running a closed beta with a small group of brands and agencies — we'll reach out directly.
               </p>
               <div style={{ borderTop: '1px solid var(--rule)', paddingTop: '24px' }}>
                 <p style={{ ...MONO, color: 'var(--faint)', marginBottom: '16px' }}>While you wait</p>
@@ -85,7 +85,7 @@ export default function WaitlistPage() {
                 <em>Before the feed fills up.</em>
               </h1>
               <p style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', color: 'var(--dim)', lineHeight: 1.6, margin: '0 0 40px' }}>
-                Click Spark is in closed beta. We're working with a small group of brands and agencies before we open to everyone. Leave your details and we'll reach out.
+                ClipSpark AI is in closed beta. We're working with a small group of brands and agencies before we open to everyone. Leave your details and we'll reach out.
               </p>
 
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>

@@ -1,0 +1,35 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - link "◆ Click Spark." [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]: ◆
+        - generic [ref=e6]: Click Spark.
+      - link "← Back" [ref=e7] [cursor=pointer]:
+        - /url: /
+    - generic [ref=e9]:
+      - generic [ref=e10]: Score Your Creative
+      - heading "Paste your script. See the brain score." [level=1] [ref=e11]:
+        - text: Paste your script.
+        - emphasis [ref=e12]: See the brain score.
+      - paragraph [ref=e13]: Drop your hook, visuals, and script in one block — or just a single line. TRIBE v2 scores how deeply it encodes across Reward, Attention, Emotion, and Memory. Then we tell you exactly how to make it stronger.
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - generic [ref=e16]: Your creative — hook, visual, script — or just paste everything
+          - 'textbox "e.g. Hook: \"You''re not drinking water. You''re refusing to be boring.\" Visual: Person at a crowded party, standing out with Liquid Death while everyone else has generic drinks. Script: Open on a crowded house party. Zoom in on one person — confident, totally unbothered. Cut to their hand. It''s a black can. Text: Refuse to be boring." [ref=e17]':
+            - /placeholder: "e.g.\n\nHook: \"You're not drinking water. You're refusing to be boring.\"\n\nVisual: Person at a crowded party, standing out with Liquid Death while everyone else has generic drinks.\n\nScript: Open on a crowded house party. Zoom in on one person — confident, totally unbothered. Cut to their hand. It's a black can. Text: Refuse to be boring."
+        - generic [ref=e18]:
+          - generic [ref=e19]:
+            - generic [ref=e20]: Image — optional · vision scoring
+            - generic [ref=e22] [cursor=pointer]: Drop image or click to upload
+          - generic [ref=e23]:
+            - generic [ref=e24]: Video URL — optional · YouTube, TikTok
+            - textbox "https://youtube.com/watch?v=..." [ref=e25]
+        - button "Score my creative →" [disabled] [ref=e26]
+      - generic [ref=e27]:
+        - paragraph [ref=e28]: 15–25 sec · powered by TRIBE v2 fMRI weights
+        - link "See a sample →" [ref=e29] [cursor=pointer]:
+          - /url: /sample
+  - button "Open Next.js Dev Tools" [ref=e35] [cursor=pointer]:
+    - img [ref=e36]
+  - alert [ref=e39]

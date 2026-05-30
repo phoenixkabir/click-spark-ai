@@ -1,0 +1,46 @@
+- generic [active] [ref=e1]:
+  - button "Open Next.js Dev Tools" [ref=e26] [cursor=pointer]:
+    - img [ref=e27]
+  - alert [ref=e30]: Brain Score 73/100 | Click Spark AI
+  - main [ref=e31]:
+    - generic [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e35]: Brain Score
+        - generic [ref=e36]:
+          - generic [ref=e37]: "73"
+          - generic [ref=e38]:
+            - generic [ref=e39]: /100 overall
+            - generic [ref=e40]: TRIBE v2 brain encoding
+      - generic [ref=e41]:
+        - generic [ref=e42]: Hook
+        - paragraph [ref=e43]: “Old gear has the best stories.”
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e47]: RewardDesire & surprise
+          - generic [ref=e49]: "75"
+          - paragraph [ref=e50]: The nostalgic hook of 'Old gear has the best stories' evokes a sense of adventure and personal history, driving desire for the product.
+        - generic [ref=e51]:
+          - generic [ref=e53]: AttentionVisual command
+          - generic [ref=e55]: "70"
+          - paragraph [ref=e56]: The visual of a faded jacket and the dynamic action of a kid trying it on create a compelling scene that captures the viewer's focus.
+        - generic [ref=e57]:
+          - generic [ref=e59]: EmotionHuman connection
+          - generic [ref=e61]: "80"
+          - paragraph [ref=e62]: The imagery of the jacket and the voiceover's playful tone elicit warm feelings of connection to shared experiences and childhood memories.
+        - generic [ref=e63]:
+          - generic [ref=e65]: MemoryLasting impression
+          - generic [ref=e67]: "65"
+          - paragraph [ref=e68]: The distinct visual of the oversized jacket and the mention of Patagonia create a memorable image that stands out, though it could be more unique.
+      - generic [ref=e69]:
+        - button "Copy share link" [ref=e70]:
+          - img [ref=e71]
+          - text: Copy share link
+        - link "View score card image" [ref=e73] [cursor=pointer]:
+          - /url: /api/og/eyJoIjoiT2xkIGdlYXIgaGFzIHRoZSBiZXN0IHN0b3JpZXMuIiwiaSI6IkZhZGVkIGphY2tldCBoYW5naW5nIG9uIGEgaG9vaywgaGFuZHMgcGljayBpdCB1cCwga2lkIHRyaWVzIGl0IG9uIHdpdGggc2xlZXZlcyBwYXN0IGhlciBrbnVja2xlcyIsInYiOiJPcGVuIG9uIGZhZGVkIGphY2tldC4gSGFuZHMgcGljayBpdCB1cC4gVm9pY2UgaGFsZi1sYXVnaGluZzogVGhpcyBvbmUncyBiZWVuIHRvIFBhdGFnb25pYS4gVHdpY2UuIEN1dCB0byBraWQgdHJ5aW5nIGl0IG9uLiBMb2dvLCBubyB0YWdsaW5lLiIsInIiOjc1LCJhIjo3MCwiZSI6ODAsIm0iOjY1LCJvIjo3MywieCI6eyJyZXdhcmQiOiJUaGUgbm9zdGFsZ2ljIGhvb2sgb2YgJ09sZCBnZWFyIGhhcyB0aGUgYmVzdCBzdG9yaWVzJyBldm9rZXMgYSBzZW5zZSBvZiBhZHZlbnR1cmUgYW5kIHBlcnNvbmFsIGhpc3RvcnksIGRyaXZpbmcgZGVzaXJlIGZvciB0aGUgcHJvZHVjdC4iLCJhdHRlbnRpb24iOiJUaGUgdmlzdWFsIG9mIGEgZmFkZWQgamFja2V0IGFuZCB0aGUgZHluYW1pYyBhY3Rpb24gb2YgYSBraWQgdHJ5aW5nIGl0IG9uIGNyZWF0ZSBhIGNvbXBlbGxpbmcgc2NlbmUgdGhhdCBjYXB0dXJlcyB0aGUgdmlld2VyJ3MgZm9jdXMuIiwiZW1vdGlvbiI6IlRoZSBpbWFnZXJ5IG9mIHRoZSBqYWNrZXQgYW5kIHRoZSB2b2ljZW92ZXIncyBwbGF5ZnVsIHRvbmUgZWxpY2l0IHdhcm0gZmVlbGluZ3Mgb2YgY29ubmVjdGlvbiB0byBzaGFyZWQgZXhwZXJpZW5jZXMgYW5kIGNoaWxkaG9vZCBtZW1vcmllcy4iLCJtZW1vcnkiOiJUaGUgZGlzdGluY3QgdmlzdWFsIG9mIHRoZSBvdmVyc2l6ZWQgamFja2V0IGFuZCB0aGUgbWVudGlvbiBvZiBQYXRhZ29uaWEgY3JlYXRlIGEgbWVtb3JhYmxlIGltYWdlIHRoYXQgc3RhbmRzIG91dCwgdGhvdWdoIGl0IGNvdWxkIGJlIG1vcmUgdW5pcXVlLiJ9fQ
+          - img [ref=e74]
+      - button "Tweak and re-score →" [ref=e77]
+      - generic [ref=e78]:
+        - link "← Score another" [ref=e79] [cursor=pointer]:
+          - /url: /score
+        - link "Analyze a brand" [ref=e80] [cursor=pointer]:
+          - /url: /
