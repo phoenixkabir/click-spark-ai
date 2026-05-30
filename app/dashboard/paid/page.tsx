@@ -228,7 +228,7 @@ export default function PaidEnginePage() {
       <div style={{ padding: '48px 40px' }}>
 
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '40px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: '24px', marginBottom: '40px' }}>
           <div>
             <div style={{ ...MONO, color: '#8b2e2e', marginBottom: '8px' }}>01 · Ads Engine</div>
             <h1 style={{ ...SERIF, fontSize: '52px', lineHeight: 1, color: '#1a1814', margin: '0 0 8px' }}>Win Now.</h1>
@@ -238,7 +238,7 @@ export default function PaidEnginePage() {
           </div>
 
           {/* Meta Ads connect widget */}
-          <div style={{ border: '1px solid var(--rule)', padding: '20px 24px', background: 'var(--paper)', minWidth: '280px' }}>
+          <div style={{ border: '1px solid var(--rule)', padding: '20px 24px', background: 'var(--paper)', minWidth: '280px', maxWidth: '100%', flexShrink: 0 }}>
             <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '12px' }}>Meta Ads Manager</div>
             {connected ? (
               <div>
