@@ -1,7 +1,30 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+
+interface TaboolaCampaign {
+  id: string
+  name: string
+  status: string
+  spent: number
+  impressions: number
+  clicks: number
+  ctr: number
+  roas: number | null
+}
+
+interface AdsData {
+  source: string
+  campaigns: TaboolaCampaign[]
+  summary: {
+    totalSpend: number
+    totalImpressions: number
+    totalClicks: number
+    avgCtr: number
+    activeCampaigns: number
+  }
+}
 
 const MONO: React.CSSProperties = { fontFamily: 'var(--font-mono)', fontSize: '10px', textTransform: 'uppercase' as const, letterSpacing: '0.18em' }
 const SERIF: React.CSSProperties = { fontFamily: 'var(--font-serif)' }
@@ -53,6 +76,16 @@ export default function PaidEnginePage() {
   const [budget, setBudget] = useState('50')
   const [launching, setLaunching] = useState(false)
   const [launched, setLaunched] = useState(false)
+  const [adsData, setAdsData] = useState<AdsData | null>(null)
+  const [adsLoading, setAdsLoading] = useState(true)
+
+  useEffect(() => {
+    fetch('/api/ads-data')
+      .then(r => r.json())
+      .then(d => { if (!d.error) setAdsData(d) })
+      .catch(() => {})
+      .finally(() => setAdsLoading(false))
+  }, [])
 
   async function handleLaunch(e: React.FormEvent) {
     e.preventDefault()
@@ -134,12 +167,25 @@ export default function PaidEnginePage() {
 
         {/* Summary stats */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0', marginBottom: '40px', border: '1px solid var(--rule)', borderTop: '2px solid #8b2e2e', background: 'var(--paper)' }}>
-          {[['$3,500', 'Total spend'], ['4.2×', 'Avg ROAS'], ['3.1%', 'Avg CTR'], ['568K', 'Impressions'], ['81', 'Avg brain score']].map(([v, l], i) => (
-            <div key={l} style={{ padding: '20px 24px', borderRight: i < 4 ? '1px solid var(--rule)' : 'none' }}>
-              <div style={{ ...SERIF, fontSize: '36px', color: '#1a1814', fontVariantNumeric: 'tabular-nums' }}>{v}</div>
-              <div style={{ ...MONO, color: 'var(--faint)', marginTop: '4px' }}>{l}</div>
-            </div>
-          ))}
+          {(() => {
+            const s = adsData?.summary
+            const fmt = (n: number) => n >= 1000000 ? `${(n/1000000).toFixed(1)}M` : n >= 1000 ? `${(n/1000).toFixed(0)}K` : String(n)
+            const stats = s
+              ? [
+                  [`₹${fmt(s.totalSpend)}`, 'Total spend (30d)'],
+                  [s.avgCtr ? `${s.avgCtr}%` : '—', 'Avg CTR'],
+                  [fmt(s.totalImpressions), 'Impressions'],
+                  [fmt(s.totalClicks), 'Clicks'],
+                  [String(s.activeCampaigns), 'Active campaigns'],
+                ]
+              : [['$3,500', 'Total spend'], ['4.2×', 'Avg ROAS'], ['3.1%', 'Avg CTR'], ['568K', 'Impressions'], ['81', 'Avg brain score']]
+            return stats.map(([v, l], i) => (
+              <div key={l} style={{ padding: '20px 24px', borderRight: i < 4 ? '1px solid var(--rule)' : 'none' }}>
+                <div style={{ ...SERIF, fontSize: '36px', color: '#1a1814', fontVariantNumeric: 'tabular-nums' }}>{v}</div>
+                <div style={{ ...MONO, color: 'var(--faint)', marginTop: '4px' }}>{l}</div>
+              </div>
+            ))
+          })()}
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 420px', gap: '40px', alignItems: 'start' }}>
@@ -156,47 +202,65 @@ export default function PaidEnginePage() {
               </button>
             </div>
 
+            {/* Source badge */}
+            {adsData && (
+              <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#8b2e2e', display: 'inline-block' }} />
+                Live · Taboola · {adsData.summary.activeCampaigns} running · last 30 days
+              </div>
+            )}
+
             <div style={{ border: '1px solid var(--rule)', background: 'var(--paper)' }}>
               {/* Table header */}
               <div style={{
-                display: 'grid', gridTemplateColumns: '2fr 80px 80px 80px 80px 80px 100px',
+                display: 'grid', gridTemplateColumns: '2fr 80px 80px 80px 80px 100px',
                 gap: '12px', padding: '12px 20px',
                 borderBottom: '2px solid #1a1814',
               }}>
-                {['Campaign', 'Score', 'ROAS', 'CTR', 'Spend', 'Impr.', 'Status'].map(h => (
+                {['Campaign', 'CTR', 'Spend', 'Impressions', 'Clicks', 'Status'].map(h => (
                   <span key={h} style={{ ...MONO, color: 'var(--faint)' }}>{h}</span>
                 ))}
               </div>
 
-              {DEMO_CAMPAIGNS.map((c, i) => (
-                <div key={c.id} style={{
-                  display: 'grid', gridTemplateColumns: '2fr 80px 80px 80px 80px 80px 100px',
-                  gap: '12px', padding: '16px 20px',
-                  borderBottom: i < DEMO_CAMPAIGNS.length - 1 ? '1px solid var(--rule)' : 'none',
-                  alignItems: 'center',
-                }}>
-                  <div>
-                    <div style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#1a1814', fontWeight: 500, marginBottom: '2px' }}>{c.name}</div>
-                    <div style={{ fontFamily: 'var(--font-sans)', fontSize: '12px', color: 'var(--dim)', fontStyle: 'italic' }}>{c.hook}</div>
-                    <div style={{ ...MONO, color: 'var(--faint)', marginTop: '2px' }}>Started {c.started}</div>
-                  </div>
-                  <div>
-                    <span style={{
-                      ...SERIF, fontSize: '22px',
-                      color: c.brainScore >= 80 ? '#8b2e2e' : c.brainScore >= 70 ? '#6a6258' : '#a39c8e',
-                      fontVariantNumeric: 'tabular-nums',
-                    }}>{c.brainScore}</span>
-                  </div>
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#1a1814', fontWeight: 500 }}>{c.roas}</span>
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#1a1814' }}>{c.ctr}</span>
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#1a1814' }}>{c.spend}</span>
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--dim)' }}>{c.impressions}</span>
-                  <span style={{
-                    ...MONO, fontSize: '9px',
-                    color: c.status === 'ACTIVE' ? '#8b2e2e' : 'var(--faint)',
-                  }}>{c.status}</span>
+              {adsLoading ? (
+                <div style={{ padding: '32px 20px', textAlign: 'center' }}>
+                  <span style={{ ...MONO, color: 'var(--faint)' }}>Loading live campaign data…</span>
                 </div>
-              ))}
+              ) : (adsData?.campaigns || DEMO_CAMPAIGNS).map((c: any, i: number, arr: any[]) => {
+                const isReal = !!adsData
+                const fmtNum = (n: number) => n >= 1000000 ? `${(n/1000000).toFixed(1)}M` : n >= 1000 ? `${(n/1000).toFixed(0)}K` : String(n)
+                return (
+                  <div key={c.id} style={{
+                    display: 'grid', gridTemplateColumns: '2fr 80px 80px 80px 80px 100px',
+                    gap: '12px', padding: '16px 20px',
+                    borderBottom: i < arr.length - 1 ? '1px solid var(--rule)' : 'none',
+                    alignItems: 'center',
+                  }}>
+                    <div>
+                      <div style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#1a1814', fontWeight: 500, marginBottom: '2px' }}>
+                        {isReal ? c.name : c.name}
+                      </div>
+                      {!isReal && <div style={{ fontFamily: 'var(--font-sans)', fontSize: '12px', color: 'var(--dim)', fontStyle: 'italic' }}>{c.hook}</div>}
+                    </div>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#1a1814' }}>
+                      {isReal ? `${c.ctr}%` : c.ctr}
+                    </span>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#1a1814' }}>
+                      {isReal ? `₹${fmtNum(c.spent)}` : c.spend}
+                    </span>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--dim)' }}>
+                      {isReal ? fmtNum(c.impressions) : c.impressions}
+                    </span>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--dim)' }}>
+                      {isReal ? fmtNum(c.clicks) : '—'}
+                    </span>
+                    <span style={{
+                      ...MONO, fontSize: '9px',
+                      color: (isReal ? c.status === 'RUNNING' : c.status === 'ACTIVE') ? '#8b2e2e' : 'var(--faint)',
+                    }}>{c.status}</span>
+                  </div>
+                )
+              })}
             </div>
 
             {/* ROAS vs Brain Score correlation note */}
