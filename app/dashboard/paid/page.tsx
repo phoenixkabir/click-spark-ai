@@ -252,9 +252,10 @@ export default function PaidEnginePage() {
               <button
                 onClick={() => setConnected(true)}
                 style={{
-                  width: '100%', background: '#1877F2', color: 'white',
+                  width: '100%', background: '#8b2e2e', color: '#f5f2ec',
                   border: 'none', padding: '10px', cursor: 'pointer',
                   fontFamily: 'var(--font-sans)', fontSize: '13px', fontWeight: 500,
+                  letterSpacing: '0.04em',
                 }}
               >
                 Connect Meta Ads →
