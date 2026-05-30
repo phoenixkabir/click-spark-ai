@@ -13,12 +13,50 @@ interface GeneratedContent {
   seo?: string
 }
 
+const PIPELINE_STAGES = [
+  {
+    num: '01',
+    label: 'Brand Brief',
+    status: 'live' as const,
+    model: 'Data Layer',
+    desc: 'Your brand context — tone, audience, positioning — is pulled automatically from the shared data layer. No re-briefing per piece.',
+  },
+  {
+    num: '02',
+    label: 'Topic + Format',
+    status: 'live' as const,
+    model: 'You',
+    desc: 'Pick a format (LinkedIn, YouTube, SEO) and give the angle or keyword. The engine handles the rest.',
+  },
+  {
+    num: '03',
+    label: 'Content Generation',
+    status: 'live' as const,
+    model: 'GPT-4o',
+    desc: 'Format-specific content written in your brand voice. LinkedIn posts, full YouTube scripts, SEO articles with H2 structure and meta descriptions.',
+  },
+  {
+    num: '04',
+    label: 'Brain Score',
+    status: 'live' as const,
+    model: 'fMRI model',
+    desc: 'Every piece is scored across Reward, Attention, Emotion, and Memory before it goes out. Weak hooks get flagged before they waste reach.',
+  },
+  {
+    num: '05',
+    label: 'Schedule & Publish',
+    status: 'waitlist' as const,
+    model: 'LinkedIn API · YouTube · CMS',
+    desc: 'Auto-post to LinkedIn, publish YouTube videos, push SEO articles directly to your CMS. One click from generation to live.',
+  },
+]
+
 const CALENDAR = [
-  { day: 'Mon 26', items: [{ type: 'LinkedIn', title: 'Why boring water is a $4B market', status: 'LIVE' }, { type: 'SEO', title: 'Best canned water brands 2026', status: 'LIVE' }] },
-  { day: 'Tue 27', items: [{ type: 'LinkedIn', title: 'The Liquid Death brand playbook', status: 'LIVE' }] },
-  { day: 'Wed 28', items: [{ type: 'YouTube', title: 'How we built a water company worth $1.4B', status: 'SCHEDULED' }, { type: 'LinkedIn', title: 'What punk rock taught us about marketing', status: 'SCHEDULED' }] },
+  { day: 'Mon 26', items: [{ type: 'LinkedIn', title: 'Why boring branding is killing D2C companies', status: 'LIVE' }, { type: 'SEO', title: 'Best canned water brands 2026', status: 'LIVE' }] },
+  { day: 'Tue 27', items: [{ type: 'LinkedIn', title: 'The brand playbook nobody teaches', status: 'LIVE' }] },
+  { day: 'Wed 28', items: [{ type: 'YouTube', title: 'How we built a $1B brand in 4 years', status: 'SCHEDULED' }, { type: 'LinkedIn', title: 'What punk rock taught us about marketing', status: 'SCHEDULED' }] },
   { day: 'Thu 29', items: [{ type: 'SEO', title: 'Alternative energy drinks that aren\'t bad for you', status: 'DRAFT' }] },
-  { day: 'Fri 30', items: [{ type: 'LinkedIn', title: 'The distribution playbook nobody talks about', status: 'DRAFT' }, { type: 'YouTube', title: 'Behind the scenes: filming a Liquid Death ad', status: 'DRAFT' }] },
+  { day: 'Fri 30', items: [{ type: 'LinkedIn', title: 'The distribution playbook nobody talks about', status: 'DRAFT' }, { type: 'YouTube', title: 'Behind the scenes: filming a brand ad', status: 'DRAFT' }] },
 ]
 
 export default function OrganicEnginePage() {
@@ -84,18 +122,123 @@ export default function OrganicEnginePage() {
         {/* Header */}
         <div style={{ marginBottom: '40px' }}>
           <div style={{ ...MONO, color: '#a39c8e', marginBottom: '8px' }}>03 · Content Engine</div>
-          <h1 style={{ ...SERIF, fontSize: '52px', lineHeight: 1, color: '#1a1814', margin: '0 0 8px' }}>
+          <h1 style={{ ...SERIF, fontSize: '52px', lineHeight: 1, color: '#1a1814', margin: '0 0 12px' }}>
             Win Forever.
           </h1>
           <p style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: 'var(--dim)', maxWidth: '560px', lineHeight: 1.6, margin: 0 }}>
-            Owned content that compounds. One brand brief generates LinkedIn posts, YouTube scripts, and SEO articles — all scored before they publish. The audience you build here makes every future ad cheaper to run.
+            Owned content that compounds. One brand brief generates LinkedIn posts, YouTube scripts, and SEO articles — all in your voice, all brain-scored before they publish. The audience you build here makes every future ad cheaper to run.
           </p>
         </div>
 
+        {/* Pipeline stages */}
+        <div style={{ marginBottom: '40px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '16px' }}>
+            <div style={{ ...MONO, color: 'var(--faint)' }}>How the content engine works</div>
+            <div style={{ ...MONO, color: 'var(--faint)', fontSize: '9px' }}>Brief → topic → generate → score → publish</div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '0', border: '1px solid var(--rule)' }}>
+            {PIPELINE_STAGES.map((stage, i) => {
+              const isLive = stage.status === 'live'
+              return (
+                <div
+                  key={stage.num}
+                  style={{
+                    borderRight: i < 4 ? '1px solid var(--rule)' : 'none',
+                    borderTop: `3px solid ${isLive ? '#a39c8e' : 'rgba(26,24,20,0.10)'}`,
+                    padding: '20px',
+                    background: isLive ? 'var(--paper)' : '#f8f4ec',
+                    position: 'relative' as const,
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px' }}>
+                    <div style={{ ...MONO, color: isLive ? '#a39c8e' : 'var(--faint)' }}>{stage.num}</div>
+                    <span style={{
+                      ...MONO, fontSize: '8px', padding: '2px 6px',
+                      background: isLive ? '#a39c8e' : 'transparent',
+                      color: isLive ? '#fbf7ee' : 'var(--faint)',
+                      border: isLive ? 'none' : '1px solid var(--rule)',
+                    }}>
+                      {isLive ? 'Live' : 'Soon'}
+                    </span>
+                  </div>
+                  <div style={{ ...MONO, color: isLive ? '#1a1814' : 'var(--faint)', marginBottom: '8px', fontSize: '10px' }}>
+                    {stage.label}
+                  </div>
+                  <p style={{ fontFamily: 'var(--font-sans)', fontSize: '12px', color: isLive ? 'var(--dim)' : 'var(--faint)', lineHeight: 1.5, margin: '0 0 12px' }}>
+                    {stage.desc}
+                  </p>
+                  <div style={{ ...MONO, fontSize: '9px', color: isLive ? '#a39c8e' : 'var(--faint)', borderTop: '1px solid var(--rule)', paddingTop: '8px' }}>
+                    {stage.model}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Stage 05 waitlist bar */}
+          <div style={{
+            background: '#1a1814', padding: '14px 20px',
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          }}>
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+              <span style={{ ...MONO, color: '#a39c8e', fontSize: '9px' }}>Stage 05 · Auto-publish</span>
+              <span style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'rgba(251,247,238,0.7)' }}>
+                One-click from generated content to live post · LinkedIn, YouTube, CMS
+              </span>
+            </div>
+            <a
+              href="/waitlist"
+              style={{
+                ...MONO, color: '#fbf7ee', background: '#8b2e2e',
+                padding: '8px 16px', textDecoration: 'none', flexShrink: 0,
+              }}
+            >
+              Join the waitlist →
+            </a>
+          </div>
+        </div>
+
+        {/* How it differs — 3 pillars */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0', marginBottom: '40px', border: '1px solid var(--rule)' }}>
+          {[
+            {
+              icon: '◆',
+              label: 'Brand voice, not generic AI',
+              desc: 'Every piece is written with your brief — tone, audience, positioning — already loaded. It sounds like your brand, not a prompt template.',
+            },
+            {
+              icon: '◆',
+              label: 'Scored before it goes out',
+              desc: 'Brain model scores each piece across Reward, Attention, Emotion, Memory. Weak hooks get flagged. You only publish content that\'s built to stick.',
+            },
+            {
+              icon: '◆',
+              label: 'Compounds with paid',
+              desc: 'Organic content builds the audience that makes your paid ads cheaper. The flywheel: content builds trust → trust lowers CPM → lower CPM funds more content.',
+            },
+          ].map((p, i) => (
+            <div
+              key={p.label}
+              style={{
+                padding: '20px 24px',
+                borderRight: i < 2 ? '1px solid var(--rule)' : 'none',
+                background: 'var(--paper)',
+              }}
+            >
+              <div style={{ ...MONO, color: '#a39c8e', marginBottom: '8px' }}>{p.icon} {p.label}</div>
+              <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--dim)', lineHeight: 1.6, margin: 0 }}>{p.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Main grid — generator + calendar */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 360px', gap: '40px', alignItems: 'start' }}>
 
           {/* Content generator */}
           <div>
+            <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '16px' }}>Stage 01–04 · Live now</div>
+
             {/* Tab bar */}
             <div style={{ display: 'flex', borderBottom: '2px solid #1a1814', marginBottom: '24px' }}>
               {([['linkedin', 'LinkedIn'], ['youtube', 'YouTube'], ['seo', 'SEO Article']] as [ContentType, string][]).map(([type, label]) => (
@@ -106,9 +249,9 @@ export default function OrganicEnginePage() {
                     ...MONO,
                     padding: '12px 20px',
                     background: 'transparent', border: 'none',
-                    borderBottom: activeTab === type ? '2px solid #8b2e2e' : '2px solid transparent',
+                    borderBottom: activeTab === type ? '2px solid #a39c8e' : '2px solid transparent',
                     marginBottom: '-2px',
-                    color: activeTab === type ? '#8b2e2e' : 'var(--faint)',
+                    color: activeTab === type ? '#a39c8e' : 'var(--faint)',
                     cursor: 'pointer',
                   }}
                 >
@@ -120,12 +263,13 @@ export default function OrganicEnginePage() {
             {/* Brief input */}
             <form onSubmit={handleGenerate} style={{ marginBottom: '24px' }}>
               <div style={{ marginBottom: '12px' }}>
-                <label style={{ ...MONO, color: 'var(--faint)', display: 'block', marginBottom: '8px' }}>
+                <label htmlFor="organic-brief" style={{ ...MONO, color: 'var(--faint)', display: 'block', marginBottom: '8px' }}>
                   {activeTab === 'linkedin' && 'Topic or angle for the LinkedIn post'}
                   {activeTab === 'youtube' && 'Video topic and key points to cover'}
                   {activeTab === 'seo' && 'Target keyword or article topic'}
                 </label>
                 <textarea
+                  id="organic-brief"
                   value={brief}
                   onChange={e => setBrief(e.target.value)}
                   placeholder={
@@ -189,9 +333,12 @@ export default function OrganicEnginePage() {
                   {content[activeTab]}
                 </div>
                 <div style={{ marginTop: '16px', borderTop: '1px solid var(--rule)', paddingTop: '12px', display: 'flex', gap: '12px' }}>
-                  <button style={{ ...MONO, color: '#fbf7ee', background: '#a39c8e', border: 'none', padding: '8px 14px', cursor: 'pointer' }}>
-                    Schedule →
-                  </button>
+                  <a
+                    href="/waitlist"
+                    style={{ ...MONO, color: '#fbf7ee', background: '#a39c8e', border: 'none', padding: '8px 14px', textDecoration: 'none', cursor: 'pointer' }}
+                  >
+                    Schedule → (soon)
+                  </a>
                   <a
                     href={`/score?prefill=${encodeURIComponent(content[activeTab]?.slice(0, 200) || '')}`}
                     style={{ ...MONO, color: 'var(--dim)', background: 'transparent', border: '1px solid var(--rule)', padding: '8px 14px', textDecoration: 'none' }}
@@ -205,8 +352,8 @@ export default function OrganicEnginePage() {
                 <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '8px' }}>
                   {activeTab === 'linkedin' ? 'LinkedIn post' : activeTab === 'youtube' ? 'YouTube script' : 'SEO article'} will appear here
                 </div>
-                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--dim)' }}>
-                  {activeTab === 'linkedin' && '~400 words · 5 angles · hook designed to stop the scroll'}
+                <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--dim)', margin: 0 }}>
+                  {activeTab === 'linkedin' && '~400 words · hook + value + CTA · designed to stop the scroll'}
                   {activeTab === 'youtube' && 'Full script · intro → hook → value → CTA · 8–12 min format'}
                   {activeTab === 'seo' && '~800 words · keyword-optimized · H2 structure · meta description included'}
                 </p>
@@ -214,7 +361,7 @@ export default function OrganicEnginePage() {
             )}
           </div>
 
-          {/* Content calendar */}
+          {/* Content calendar + stats */}
           <div>
             <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '16px' }}>Content calendar · May 2026</div>
             <div style={{ border: '1px solid var(--rule)', background: 'var(--paper)' }}>
