@@ -218,10 +218,11 @@ export default function ScorePage() {
 
             {/* Main creative input */}
             <div>
-              <label style={{ ...MONO, color: 'var(--faint)', display: 'block', marginBottom: '8px' }}>
+              <label htmlFor="creative-input" style={{ ...MONO, color: 'var(--faint)', display: 'block', marginBottom: '8px' }}>
                 Your creative — <span style={{ color: 'var(--dim)' }}>hook, visual, script — or just paste everything</span>
               </label>
               <textarea
+                id="creative-input"
                 value={creative}
                 onChange={e => setCreative(e.target.value)}
                 placeholder={`e.g.
