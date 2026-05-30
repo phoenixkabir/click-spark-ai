@@ -321,7 +321,7 @@ export default function DashboardPage() {
                   </div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '20px' }}>
-                  {[['5', 'pipeline stages'], ['GPT-4o', 'ideation + script'], ['HeyGen', 'video gen · soon'], ['fMRI', 'brain-scored output']].map(([v, l]) => (
+                  {[['5', 'pipeline stages'], ['AI-written', 'ideation + script'], ['Creator-ready', 'video gen · soon'], ['Neuro-scored', 'brain-optimised output']].map(([v, l]) => (
                     <div key={l} style={{ borderTop: '1px solid var(--rule)', paddingTop: '10px' }}>
                       <div style={{ ...SERIF, fontSize: '22px', color: '#1a1814', fontVariantNumeric: 'tabular-nums' }}>{v}</div>
                       <div style={{ ...MONO, color: 'var(--faint)', marginTop: '2px' }}>{l}</div>

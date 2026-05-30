@@ -28,35 +28,35 @@ const PIPELINE_STAGES = [
     label: 'Ideation',
     desc: 'Brief in. AI generates angles, hooks, and personas tuned to your audience.',
     status: 'live',
-    model: 'GPT-4o',
+    model: 'Smart scripting',
   },
   {
     num: '02',
     label: 'Scripting',
     desc: 'Creator-native scripts — not branded, not polished. Built to feel organic on each platform.',
     status: 'live',
-    model: 'GPT-4o',
+    model: 'Smart scripting',
   },
   {
     num: '03',
     label: 'Video Generation',
     desc: 'AI avatars bring the script to life. Realistic creators, right platform format, zero production time.',
     status: 'waitlist',
-    model: 'HeyGen / Kling',
+    model: 'Creator-ready video',
   },
   {
     num: '04',
     label: 'Editing & Post',
     desc: 'Auto-cut, captions, B-roll, music — all handled. Ready to publish.',
     status: 'waitlist',
-    model: 'Runway / ElevenLabs',
+    model: 'Studio post-production',
   },
   {
     num: '05',
     label: 'Brain Score & Publish',
     desc: 'Every video scored before it goes live. Only the ones that pass get published.',
     status: 'waitlist',
-    model: 'fMRI model + Meta API',
+    model: 'Neuro-scored · auto-publish',
   },
 ]
 
@@ -273,7 +273,7 @@ Generate 3 UGC scripts for TikTok and Instagram Reels.`}
                 ))}
               </div>
               <p style={{ ...MONO, color: 'var(--faint)', marginTop: '12px', lineHeight: 1.6 }}>
-                AI avatars via HeyGen · accounts managed by ClipSpark AI · native-feel content only
+                AI avatars · accounts managed by ClipSpark AI · native-feel content only
               </p>
             </div>
           </div>
