@@ -27,6 +27,31 @@ interface AdsData {
   }
 }
 
+interface MetaCampaign {
+  id: string
+  name: string
+  brand: string
+  status: string
+  objective: string
+  spend: number
+  impressions: number
+  clicks: number
+  ctr: number
+  conversions: number
+  roas: number | null
+}
+
+interface MetaData {
+  campaigns: MetaCampaign[]
+  summary: {
+    totalSpend: number
+    totalImpressions: number
+    totalClicks: number
+    avgCtr: number
+    activeCampaigns: number
+  }
+}
+
 const MONO: React.CSSProperties = { fontFamily: 'var(--font-mono)', fontSize: '10px', textTransform: 'uppercase' as const, letterSpacing: '0.18em' }
 const SERIF: React.CSSProperties = { fontFamily: 'var(--font-serif)' }
 
@@ -64,6 +89,12 @@ export default function PaidEnginePage() {
   const [adsData, setAdsData] = useState<AdsData | null>(null)
   const [adsLoading, setAdsLoading] = useState(true)
 
+  // Meta Ads
+  const [metaData, setMetaData] = useState<MetaData | null>(null)
+  const [metaLoading, setMetaLoading] = useState(true)
+  const [metaError, setMetaError] = useState('')
+  const [activeSource, setActiveSource] = useState<'taboola' | 'meta'>('meta')
+
   // AI analysis
   const [analysis, setAnalysis] = useState<AnalysisResult | null>(null)
   const [analyzing, setAnalyzing] = useState(false)
@@ -79,26 +110,36 @@ export default function PaidEnginePage() {
       .then(d => { if (!d.error) setAdsData(d) })
       .catch(() => {})
       .finally(() => setAdsLoading(false))
+
+    fetch('/api/meta-ads')
+      .then(r => r.json())
+      .then(d => {
+        if (d.error) setMetaError(d.error)
+        else setMetaData(d)
+      })
+      .catch(() => setMetaError('Failed to load Meta data'))
+      .finally(() => setMetaLoading(false))
   }, [])
 
   async function handleAnalyze() {
-    const campaigns = adsData?.campaigns
-    if (!campaigns?.length) return
+    const isMetaActive = activeSource === 'meta' && metaData
+    const rawCampaigns = isMetaActive ? metaData!.campaigns : adsData?.campaigns
+    if (!rawCampaigns?.length) return
     setAnalyzing(true)
     setAnalyzeError('')
     setAnalysis(null)
     try {
-      const payload = campaigns.map(c => ({
-        id: c.id,
-        name: c.name,
-        platform: 'Taboola',
-        status: c.status,
-        spend: c.spent,
-        impressions: c.impressions,
-        clicks: c.clicks,
-        ctr: c.ctr,
-        roas: c.roas,
-      }))
+      const payload = isMetaActive
+        ? (rawCampaigns as MetaCampaign[]).map(c => ({
+            id: c.id, name: c.name, platform: 'Meta',
+            status: c.status, spend: c.spend,
+            impressions: c.impressions, clicks: c.clicks, ctr: c.ctr, roas: c.roas,
+          }))
+        : (rawCampaigns as TaboolaCampaign[]).map(c => ({
+            id: c.id, name: c.name, platform: 'Taboola',
+            status: c.status, spend: c.spent,
+            impressions: c.impressions, clicks: c.clicks, ctr: c.ctr, roas: c.roas,
+          }))
       const res = await fetch('/api/campaigns/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -158,8 +199,10 @@ export default function PaidEnginePage() {
     }
   }
 
-  const campaigns = adsData?.campaigns || []
-  const isDormant = adsData && campaigns.every(c => c.spent === 0)
+  const activeSummary = activeSource === 'meta' && metaData ? metaData.summary : adsData?.summary
+  const metaCampaigns = metaData?.campaigns || []
+  const taboolaCampaigns = adsData?.campaigns || []
+  const isDormant = activeSource === 'taboola' && adsData && taboolaCampaigns.every(c => c.spent === 0)
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)' }}>
@@ -219,16 +262,64 @@ export default function PaidEnginePage() {
           </div>
         </div>
 
+        {/* Source switcher */}
+        <div style={{ display: 'flex', gap: '0', marginBottom: '24px', border: '1px solid var(--rule)', width: 'fit-content' }}>
+          {(['meta', 'taboola'] as const).map(src => (
+            <button
+              key={src}
+              onClick={() => { setActiveSource(src); setAnalysis(null) }}
+              style={{
+                ...MONO, padding: '10px 20px', cursor: 'pointer', border: 'none',
+                background: activeSource === src ? '#1a1814' : 'var(--paper)',
+                color: activeSource === src ? '#fbf7ee' : 'var(--dim)',
+                borderRight: src === 'meta' ? '1px solid var(--rule)' : 'none',
+              }}
+            >
+              {src === 'meta' ? '◈ Meta · Facebook' : '◈ Taboola · Native'}
+            </button>
+          ))}
+        </div>
+
+        {/* Meta token missing notice */}
+        {activeSource === 'meta' && metaError.includes('not configured') && (
+          <div style={{
+            marginBottom: '24px', padding: '16px 20px',
+            background: '#fbf7ee', border: '1px solid var(--rule)',
+            borderLeft: '3px solid #1877F2',
+          }}>
+            <div style={{ ...MONO, color: '#1877F2', marginBottom: '6px' }}>Meta access token needed</div>
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--dim)', margin: '0 0 8px', lineHeight: 1.5 }}>
+              Add <code style={{ background: 'rgba(0,0,0,0.06)', padding: '1px 5px' }}>FACEBOOK_ACCESS_TOKEN</code> to your <code style={{ background: 'rgba(0,0,0,0.06)', padding: '1px 5px' }}>.env.local</code> to pull live campaign data from all three accounts (Tradewise, Astrolearn, Healoved).
+            </p>
+            <div style={{ ...MONO, color: 'var(--faint)', fontSize: '9px' }}>
+              Get it: Meta Business Suite → Settings → System Users → Generate token → ad_read permission
+            </div>
+          </div>
+        )}
+
+        {activeSource === 'meta' && metaError && !metaError.includes('not configured') && (
+          <div style={{
+            marginBottom: '24px', padding: '14px 20px',
+            background: '#fff0f0', border: '1px solid #f5c6cb',
+            borderLeft: '3px solid #c0392b',
+          }}>
+            <div style={{ ...MONO, color: '#c0392b', marginBottom: '4px' }}>Meta API error</div>
+            <span style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#c0392b' }}>{metaError}</span>
+          </div>
+        )}
+
         {/* Summary stats */}
         <div style={{
           display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)',
-          marginBottom: '40px', border: '1px solid var(--rule)',
-          borderTop: '2px solid #8b2e2e', background: 'var(--paper)',
+          marginBottom: '24px', border: '1px solid var(--rule)',
+          borderTop: `2px solid ${activeSource === 'meta' ? '#1877F2' : '#8b2e2e'}`,
+          background: 'var(--paper)',
         }}>
           {(() => {
-            const s = adsData?.summary
+            const s = activeSummary
             const fmt = (n: number) => n >= 1000000 ? `${(n/1000000).toFixed(1)}M` : n >= 1000 ? `${(n/1000).toFixed(0)}K` : String(n)
-            const stats = s
+            const isLoading = activeSource === 'meta' ? metaLoading : adsLoading
+            const stats = s && !isLoading
               ? [
                   [`₹${fmt(s.totalSpend)}`, 'Total spend · 30d'],
                   [s.avgCtr ? `${s.avgCtr}%` : '—', 'Avg CTR'],
@@ -236,7 +327,7 @@ export default function PaidEnginePage() {
                   [fmt(s.totalClicks), 'Clicks'],
                   [String(s.activeCampaigns), 'Active now'],
                 ]
-              : [['$3,500', 'Total spend'], ['4.2×', 'Avg ROAS'], ['3.1%', 'Avg CTR'], ['568K', 'Impressions'], ['81', 'Avg brain score']]
+              : [['—', 'Total spend · 30d'], ['—', 'Avg CTR'], ['—', 'Impressions'], ['—', 'Clicks'], ['—', 'Active now']]
             return stats.map(([v, l], i) => (
               <div key={l} style={{ padding: '20px 24px', borderRight: i < 4 ? '1px solid var(--rule)' : 'none' }}>
                 <div style={{ ...SERIF, fontSize: '36px', color: '#1a1814', fontVariantNumeric: 'tabular-nums' }}>{v}</div>
@@ -267,8 +358,14 @@ export default function PaidEnginePage() {
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
               <div>
-                <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '4px' }}>Active campaigns</div>
-                {adsData && (
+                <div style={{ ...MONO, color: 'var(--faint)', marginBottom: '4px' }}>Campaigns · {activeSource === 'meta' ? 'Meta' : 'Taboola'}</div>
+                {activeSource === 'meta' && metaData && (
+                  <div style={{ ...MONO, color: 'var(--faint)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#1877F2', display: 'inline-block' }} />
+                    Live · Meta · {metaData.summary.activeCampaigns} active · last 30 days · 3 accounts
+                  </div>
+                )}
+                {activeSource === 'taboola' && adsData && (
                   <div style={{ ...MONO, color: 'var(--faint)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#8b2e2e', display: 'inline-block' }} />
                     Live · Taboola · {adsData.summary.activeCampaigns} running · last 30 days
@@ -276,7 +373,7 @@ export default function PaidEnginePage() {
                 )}
               </div>
               <div style={{ display: 'flex', gap: '8px' }}>
-                {adsData && campaigns.length > 0 && (
+                {((activeSource === 'meta' && metaCampaigns.length > 0) || (activeSource === 'taboola' && taboolaCampaigns.length > 0)) && (
                   <button
                     onClick={handleAnalyze}
                     disabled={analyzing}
@@ -301,20 +398,74 @@ export default function PaidEnginePage() {
 
             {/* Campaign table */}
             <div style={{ border: '1px solid var(--rule)', background: 'var(--paper)', marginBottom: '16px' }}>
-              <div style={{
-                display: 'grid', gridTemplateColumns: '2fr 70px 80px 80px 70px 90px 80px',
-                gap: '8px', padding: '12px 20px', borderBottom: '2px solid #1a1814',
-              }}>
-                {['Campaign', 'Grade', 'CTR', 'Spend', 'Impressions', 'Status', 'Control'].map(h => (
-                  <span key={h} style={{ ...MONO, color: 'var(--faint)' }}>{h}</span>
-                ))}
-              </div>
-
-              {adsLoading ? (
-                <div style={{ padding: '32px 20px', textAlign: 'center' }}>
-                  <span style={{ ...MONO, color: 'var(--faint)' }}>Loading live campaign data…</span>
-                </div>
-              ) : (adsData ? campaigns : DEMO_CAMPAIGNS).map((c: any, i: number, arr: any[]) => {
+              {activeSource === 'meta' ? (
+                // Meta columns (include ROAS + conversions)
+                <>
+                  <div style={{
+                    display: 'grid', gridTemplateColumns: '2fr 70px 70px 80px 80px 80px 90px',
+                    gap: '8px', padding: '12px 20px', borderBottom: '2px solid #1a1814',
+                  }}>
+                    {['Campaign', 'Grade', 'CTR', 'Spend ₹', 'ROAS', 'Impr.', 'Status'].map(h => (
+                      <span key={h} style={{ ...MONO, color: 'var(--faint)' }}>{h}</span>
+                    ))}
+                  </div>
+                  {metaLoading ? (
+                    <div style={{ padding: '32px 20px', textAlign: 'center' }}>
+                      <span style={{ ...MONO, color: 'var(--faint)' }}>Loading Meta campaign data…</span>
+                    </div>
+                  ) : metaError && !metaError.includes('not configured') ? null : metaCampaigns.length === 0 ? (
+                    <div style={{ padding: '32px 20px', textAlign: 'center' }}>
+                      <span style={{ ...MONO, color: 'var(--faint)' }}>
+                        {metaError.includes('not configured') ? 'Add FACEBOOK_ACCESS_TOKEN to see campaigns' : 'No campaigns found'}
+                      </span>
+                    </div>
+                  ) : metaCampaigns.map((c, i) => {
+                    const fmtNum = (n: number) => n >= 1000000 ? `${(n/1000000).toFixed(1)}M` : n >= 1000 ? `${(n/1000).toFixed(0)}K` : String(n)
+                    const campaignGrade = analysis?.campaigns.find(a => a.id === c.id)
+                    return (
+                      <div key={c.id} style={{
+                        display: 'grid', gridTemplateColumns: '2fr 70px 70px 80px 80px 80px 90px',
+                        gap: '8px', padding: '14px 20px',
+                        borderBottom: i < metaCampaigns.length - 1 ? '1px solid var(--rule)' : 'none',
+                        alignItems: 'center',
+                      }}>
+                        <div>
+                          <div style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: '#1a1814', fontWeight: 500, marginBottom: '2px' }}>{c.name}</div>
+                          <div style={{ ...MONO, fontSize: '9px', color: 'var(--faint)' }}>{c.brand} · {c.objective?.replace(/_/g, ' ').toLowerCase()}</div>
+                          {campaignGrade && (
+                            <div style={{ fontFamily: 'var(--font-sans)', fontSize: '11px', color: 'var(--dim)', fontStyle: 'italic', marginTop: '2px' }}>
+                              {campaignGrade.verdict}
+                            </div>
+                          )}
+                        </div>
+                        <div>{campaignGrade ? <GradeBadge grade={campaignGrade.grade} /> : <span style={{ ...MONO, color: 'var(--faint)' }}>—</span>}</div>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#1a1814' }}>{c.ctr ? `${c.ctr}%` : '—'}</span>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: '#1a1814' }}>₹{fmtNum(c.spend)}</span>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', color: c.roas && c.roas >= 3 ? '#2d6a4f' : '#1a1814' }}>
+                          {c.roas ? `${c.roas}×` : '—'}
+                        </span>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--dim)' }}>{fmtNum(c.impressions)}</span>
+                        <span style={{ ...MONO, fontSize: '9px', color: c.status === 'ACTIVE' ? '#1877F2' : 'var(--faint)' }}>{c.status}</span>
+                      </div>
+                    )
+                  })}
+                </>
+              ) : (
+                // Taboola columns
+                <>
+                  <div style={{
+                    display: 'grid', gridTemplateColumns: '2fr 70px 80px 80px 70px 90px 80px',
+                    gap: '8px', padding: '12px 20px', borderBottom: '2px solid #1a1814',
+                  }}>
+                    {['Campaign', 'Grade', 'CTR', 'Spend', 'Impressions', 'Status', 'Control'].map(h => (
+                      <span key={h} style={{ ...MONO, color: 'var(--faint)' }}>{h}</span>
+                    ))}
+                  </div>
+                  {adsLoading ? (
+                    <div style={{ padding: '32px 20px', textAlign: 'center' }}>
+                      <span style={{ ...MONO, color: 'var(--faint)' }}>Loading Taboola data…</span>
+                    </div>
+                  ) : (adsData ? taboolaCampaigns : DEMO_CAMPAIGNS).map((c: any, i: number, arr: any[]) => {
                 const isReal = !!adsData
                 const fmtNum = (n: number) => n >= 1000000 ? `${(n/1000000).toFixed(1)}M` : n >= 1000 ? `${(n/1000).toFixed(0)}K` : String(n)
                 const campaignGrade = analysis?.campaigns.find(a => a.id === c.id)
@@ -384,6 +535,8 @@ export default function PaidEnginePage() {
                   </div>
                 )
               })}
+                </>
+              )}
             </div>
 
             {/* AI Analysis results */}
